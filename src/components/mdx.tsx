@@ -29,7 +29,6 @@ import {
   rehypeHighlightCodeRawString,
 } from "@/lib/rehype-code-block"
 import { rehypeNpmCommand } from "@/lib/rehype-npm-command"
-import { remarkCodeImport } from "@/lib/remark-code-import"
 import { cn } from "@/lib/utils"
 
 import { Callout } from "./callout"
@@ -152,7 +151,7 @@ const components: MDXRemoteProps["components"] = {
 
 const options: MDXRemoteProps["options"] = {
   mdxOptions: {
-    remarkPlugins: [remarkGfm, remarkCodeImport],
+    remarkPlugins: [remarkGfm],
     rehypePlugins: [
       [
         rehypeExternalLinks,

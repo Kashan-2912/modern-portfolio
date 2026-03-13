@@ -103,6 +103,7 @@ export function useSound(url: string) {
       })
       .catch(() => {
         audioCache.set(url, null)
+        return undefined as unknown as AudioBuffer
       })
 
     // Mark as loading in cache
