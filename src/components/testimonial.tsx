@@ -53,6 +53,19 @@ export function TestimonialAvatarImg({
   className,
   ...props
 }: React.ComponentProps<typeof Image>) {
+  if (!src) {
+    return (
+      <div
+        className={cn(
+          "flex size-8 items-center justify-center rounded-full bg-muted text-xs font-semibold text-muted-foreground",
+          className
+        )}
+      >
+        {typeof alt === "string" ? alt.charAt(0) : "?"}
+      </div>
+    )
+  }
+
   return (
     <Image
       className={cn("rounded-full", className)}

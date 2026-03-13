@@ -55,22 +55,22 @@ export default function Page() {
         <TechStack />
         <Separator />
 
-        <Blog />
+        {/* <Blog /> */}
         <Separator />
 
-        <Experiences />
+        {/* <Experiences /> */}
         <Separator />
 
-        <Projects />
+        {/* <Projects /> */}
         <Separator />
 
-        <Awards />
+        {/* <Awards /> */}
         <Separator />
 
-        <Certifications />
+        {/* <Certifications /> */}
         <Separator />
 
-        <Bookmarks />
+        {/* <Bookmarks /> */}
         <Separator />
       </div>
     </>

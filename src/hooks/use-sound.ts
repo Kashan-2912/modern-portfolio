@@ -101,11 +101,8 @@ export function useSound(url: string) {
         bufferRef.current = decoded
         return decoded
       })
-      .catch((err) => {
-        console.log(`Failed to load sound from ${url}:`, err)
-        // Mark as failed in cache
+      .catch(() => {
         audioCache.set(url, null)
-        throw err
       })
 
     // Mark as loading in cache

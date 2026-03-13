@@ -19,7 +19,7 @@ import {
 
 export const metadata: Metadata = {
   title: "Loved by Devs Worldwide",
-  description: "See what developers are saying about my work and projects.",
+  description: "See what clients & developers are saying about my work and projects.",
   alternates: {
     canonical: "/testimonials",
   },
@@ -61,7 +61,7 @@ export default function TestimonialsPage() {
 
       <div className="p-4">
         <p className="font-mono text-sm text-balance text-muted-foreground">
-          See what developers are saying about my work and projects.
+          See what clients & developers are saying about my work and projects.
         </p>
       </div>
 

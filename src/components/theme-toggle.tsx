@@ -19,7 +19,7 @@ export function ThemeToggle() {
 
   const { setMetaColor } = useMetaColor()
 
-  const playClick = useSound(SOUNDS.click)
+  const playClick = useSound(SOUNDS.unlock)
 
   const switchTheme = (sound = true) => {
     if (sound) playClick(0.2)
