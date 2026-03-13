@@ -8,7 +8,7 @@ import type { Testimonial } from "../types/testimonials"
 export const TESTIMONIALS_1: Testimonial[] = [
   {
     authorAvatar: "/spline-job.jpg",
-    authorName: "Upwork Client",
+    authorName: "Luke Didriksen",
     authorTagline: "Spline and Next.js Expert Needed",
     url: "https://www.upwork.com/freelancers/~01ec288c31651818ea#702292547842158592",
     quote:
@@ -17,7 +17,7 @@ export const TESTIMONIALS_1: Testimonial[] = [
   },
   {
     authorAvatar: "/fixux-job.png",
-    authorName: "Upwork Client",
+    authorName: "Alden DoRosario",
     authorTagline: "Fix UX For Vibe Coded App",
     url: "https://www.upwork.com/freelancers/~01ec288c31651818ea#702292547842158593",
     quote:
@@ -48,7 +48,7 @@ export const TESTIMONIALS_1: Testimonial[] = [
 export const TESTIMONIALS_2: Testimonial[] = [
   {
     authorAvatar: "https://ui-avatars.com/api/?name=Vercel+Client&background=16A34A&color=fff&size=64",
-    authorName: "Upwork Client",
+    authorName: "Ricky Bal",
     authorTagline: "Fix Vercel Deployment",
     url: "https://www.upwork.com/freelancers/~01ec288c31651818ea#702292547842158594",
     quote:
