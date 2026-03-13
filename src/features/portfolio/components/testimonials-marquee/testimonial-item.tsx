@@ -1,0 +1,46 @@
+import {
+  Testimonial,
+  TestimonialAuthor,
+  TestimonialAuthorName,
+  TestimonialAuthorTagline,
+  TestimonialAvatar,
+  TestimonialAvatarImg,
+  TestimonialAvatarRing,
+  TestimonialQuote,
+} from "@/components/testimonial"
+
+import type { Testimonial as TestimonialType } from "../../types/testimonials"
+
+export function TestimonialItem({
+  authorAvatar,
+  authorName,
+  authorTagline,
+  url,
+  quote,
+}: TestimonialType) {
+  return (
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="block h-full rounded-xl border border-edge transition-[background-color] ease-out hover:bg-accent-muted"
+    >
+      <Testimonial>
+        <TestimonialQuote className="text-pretty">
+          <p>{quote}</p>
+        </TestimonialQuote>
+
+        <TestimonialAuthor>
+          <TestimonialAvatar>
+            <TestimonialAvatarImg src={authorAvatar} alt={authorName} />
+            <TestimonialAvatarRing />
+          </TestimonialAvatar>
+
+          <TestimonialAuthorName>{authorName}</TestimonialAuthorName>
+
+          <TestimonialAuthorTagline>{authorTagline}</TestimonialAuthorTagline>
+        </TestimonialAuthor>
+      </Testimonial>
+    </a>
+  )
+}

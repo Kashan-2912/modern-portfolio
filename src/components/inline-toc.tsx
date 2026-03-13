@@ -1,0 +1,64 @@
+import type { TOCItemType } from "fumadocs-core/toc"
+import { TextIcon } from "lucide-react"
+
+import {
+  Collapsible,
+  CollapsibleChevronDownIcon,
+} from "@/components/base/collapsible-animated"
+import {
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/base/ui/collapsible"
+import { cn } from "@/lib/utils"
+
+export function InlineTOC({
+  items,
+  className,
+  children,
+  ...props
+}: React.ComponentProps<typeof Collapsible> & {
+  items: TOCItemType[]
+}) {
+  if (!items.length) {
+    return null
+  }
+
+  return (
+    <Collapsible
+      className={cn(
+        "not-prose group/inline-toc rounded-xl bg-code font-sans",
+        className
+      )}
+      {...props}
+    >
+      <CollapsibleTrigger className="inline-flex w-full items-center gap-2 rounded-xl py-2.5 pr-2 pl-4 text-sm font-medium outline-none group-data-open/inline-toc:rounded-b-none focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:ring-inset [&_svg]:size-4">
+        <TextIcon className="-translate-x-0.5" />
+        {children ?? "On this page"}
+        <div className="ml-auto shrink-0 text-muted-foreground">
+          <CollapsibleChevronDownIcon duration={0.15} />
+        </div>
+      </CollapsibleTrigger>
+
+      <CollapsibleContent>
+        <ul className="flex flex-col px-4 pb-2 text-sm text-muted-foreground">
+          {items.map((item) => (
+            <li
+              key={item.url}
+              className="flex py-1"
+              style={{
+                paddingInlineStart: 16 * Math.max(item.depth - 2, 0),
+              }}
+            >
+              <a
+                className="underline-offset-4 transition-colors hover:text-accent-foreground hover:underline"
+                href={item.url}
+              >
+                {item.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </CollapsibleContent>
+    </Collapsible>
+  )
+}
