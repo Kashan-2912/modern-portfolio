@@ -17,7 +17,7 @@ export const USER: User = {
   address: "Islamabad, Pakistan",
   phoneNumber: "+92 345 8032912",
   email: "mkashan2912@gmail.com",
-  website: "itzkashan.dev",
+  website: "https://itzkashan.dev",
   jobTitle: "Full Stack Developer",
   jobs: [
     {
