@@ -44,6 +44,12 @@ export const TECH_STACK: TechStack[] = [
     categories: ["Runtime Environment"],
   },
   {
+    key: "npm",
+    title: "npm",
+    href: "https://www.npmjs.com/",
+    categories: ["Tools"],
+  },
+  {
     key: "react",
     title: "React",
     href: "https://react.dev/",
@@ -97,12 +103,6 @@ export const TECH_STACK: TechStack[] = [
     theme: true,
   },
   {
-    key: "mobx-state-tree",
-    title: "MobX-State-Tree",
-    href: "https://mobx-state-tree.js.org/",
-    categories: ["State Management"],
-  },
-  {
     key: "redux",
     title: "Redux",
     href: "https://redux.js.org/",
@@ -134,10 +134,10 @@ export const TECH_STACK: TechStack[] = [
   //   categories: ["Framework"],
   // },
   {
-    key: "laravel",
-    title: "Laravel",
-    href: "https://laravel.com/",
-    categories: ["Framework"],
+    key: "kubernetes",
+    title: "Kubernetes",
+    href: "https://kubernetes.io/",
+    categories: ["Containerization", "Hosting"],
   },
   {
     key: "git",
@@ -164,21 +164,52 @@ export const TECH_STACK: TechStack[] = [
     categories: ["Database"],
   },
   {
+    key: "postgresql",
+    title: "PostgreSQL",
+    href: "https://www.postgresql.org/",
+    categories: ["Database"],
+  },
+  {
     key: "redis",
     title: "Redis",
     href: "https://redis.io/",
     categories: ["Database"],
   },
   {
+    key: "neon",
+    title: "Neon",
+    href: "https://neon.tech/",
+    categories: ["Database"],
+    ext: "png",
+  },
+  {
+    key: "supabase",
+    title: "Supabase",
+    href: "https://supabase.com/",
+    categories: ["Database", "Hosting"],
+  },
+  {
+    key: "appwrite",
+    title: "Appwrite",
+    href: "https://appwrite.io/",
+    categories: ["Database", "Hosting"],
+  },
+  {
+    key: "firebase",
+    title: "Firebase",
+    href: "https://firebase.google.com/",
+    categories: ["Database", "Hosting"],
+  },
+  // {
+  //   key: "kafka",
+  //   title: "Kafka",
+  //   href: "https://kafka.apache.org/",
+  //   categories: ["Database", "Tools"],
+  // },
+  {
     key: "figma",
     title: "Figma",
     href: "https://www.figma.com/",
-    categories: ["Tools", "Design"],
-  },
-  {
-    key: "ps",
-    title: "Adobe Photoshop",
-    href: "https://www.adobe.com/vn_en/products/photoshop.html",
     categories: ["Tools", "Design"],
   },
   {

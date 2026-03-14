@@ -30,34 +30,24 @@ export function TechStack() {
                         rel="noopener noreferrer"
                         aria-label={tech.title}
                       >
-                        {tech.theme ? (
-                          <>
-                            <Image
-                              src={`https://assets.chanhdai.com/images/tech-stack-icons/${tech.key}-light.svg`}
-                              alt={`${tech.title} light icon`}
-                              width={32}
-                              height={32}
-                              className="hidden [html.light_&]:block"
-                              unoptimized
-                            />
-                            <Image
-                              src={`https://assets.chanhdai.com/images/tech-stack-icons/${tech.key}-dark.svg`}
-                              alt={`${tech.title} dark icon`}
-                              width={32}
-                              height={32}
-                              className="hidden [html.dark_&]:block"
-                              unoptimized
-                            />
-                          </>
-                        ) : (
+                        <>
                           <Image
-                            src={`https://assets.chanhdai.com/images/tech-stack-icons/${tech.key}.svg`}
-                            alt={`${tech.title} icon`}
+                            src={`/tech-stack-icons/light/${tech.key}${tech.ext ? `.${tech.ext}` : '-light.svg'}`}
+                            alt={`${tech.title} light icon`}
                             width={32}
                             height={32}
+                            className="hidden [html.light_&]:block"
                             unoptimized
                           />
-                        )}
+                          <Image
+                            src={`/tech-stack-icons/dark/${tech.key}${tech.ext ? `.${tech.ext}` : '-dark.svg'}`}
+                            alt={`${tech.title} dark icon`}
+                            width={32}
+                            height={32}
+                            className="hidden [html.dark_&]:block"
+                            unoptimized
+                          />
+                        </>
                       </a>
                     }
                   />

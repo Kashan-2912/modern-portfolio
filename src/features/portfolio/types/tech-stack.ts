@@ -18,4 +18,6 @@ export type TechStack = {
   categories: string[]
   /** If true, use theme-specific icons for dark/light mode. */
   theme?: boolean
+  /** Custom file extension, e.g., 'png'. Defaults to 'svg'. If provided, does not append '-light' or '-dark' to filename. */
+  ext?: string
 }
