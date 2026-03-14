@@ -65,7 +65,7 @@ export default function Page() {
         <Education />
         <Separator />
 
-        {/* <Projects /> */}
+        <Projects />
         <Separator />
 
         {/* <Awards /> */}
