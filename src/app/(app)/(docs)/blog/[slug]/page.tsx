@@ -5,15 +5,10 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import type { BlogPosting as PageSchema, WithContext } from "schema-dts"
 
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/base/ui/tooltip"
+import { FramedImage } from "@/components/embed"
 import { InlineTOC } from "@/components/inline-toc"
 import { MDX } from "@/components/mdx"
 import { Button } from "@/components/ui/button"
-import { Kbd } from "@/components/ui/kbd"
 import { Prose } from "@/components/ui/typography"
 import { SITE_INFO, X_USERNAME } from "@/config/site"
 import { PostKeyboardShortcuts } from "@/features/blog/components/post-keyboard-shortcuts"
@@ -156,59 +151,33 @@ export default async function Page({
           <PostShareMenu title={doc.metadata.title} url={getDocUrl(doc)} />
 
           {previous && (
-            <Tooltip>
-              <TooltipTrigger
-                render={
-                  <Button
-                    className="size-7 border-none"
-                    variant="secondary"
-                    size="icon-sm"
-                    asChild
-                  >
-                    <Link href={`/blog/${previous.slug}`}>
-                      <ArrowLeftIcon />
-                      <span className="sr-only">Previous</span>
-                    </Link>
-                  </Button>
-                }
-              />
-              <TooltipContent className="pr-2 pl-3">
-                <div className="flex items-center gap-3">
-                  Previous Post
-                  <Kbd>
-                    <ArrowLeftIcon />
-                  </Kbd>
-                </div>
-              </TooltipContent>
-            </Tooltip>
+            <Button
+              className="size-7 border-none"
+              variant="secondary"
+              size="icon-sm"
+              asChild
+              title="Previous Post"
+            >
+              <Link href={`/blog/${previous.slug}`}>
+                <ArrowLeftIcon />
+                <span className="sr-only">Previous</span>
+              </Link>
+            </Button>
           )}
 
           {next && (
-            <Tooltip>
-              <TooltipTrigger
-                render={
-                  <Button
-                    className="size-7 border-none"
-                    variant="secondary"
-                    size="icon-sm"
-                    asChild
-                  >
-                    <Link href={`/blog/${next.slug}`}>
-                      <span className="sr-only">Next</span>
-                      <ArrowRightIcon />
-                    </Link>
-                  </Button>
-                }
-              />
-              <TooltipContent className="pr-2 pl-3">
-                <div className="flex items-center gap-3">
-                  Next Post
-                  <Kbd>
-                    <ArrowRightIcon />
-                  </Kbd>
-                </div>
-              </TooltipContent>
-            </Tooltip>
+            <Button
+              className="size-7 border-none"
+              variant="secondary"
+              size="icon-sm"
+              asChild
+              title="Next Post"
+            >
+              <Link href={`/blog/${next.slug}`}>
+                <span className="sr-only">Next</span>
+                <ArrowRightIcon />
+              </Link>
+            </Button>
           )}
         </div>
       </div>
@@ -229,6 +198,14 @@ export default async function Page({
         </h1>
 
         <p className="text-muted-foreground">{doc.metadata.description}</p>
+
+        {doc.metadata.image && (
+          <FramedImage
+            src={doc.metadata.image}
+            alt={doc.metadata.title}
+            className="w-full"
+          />
+        )}
 
         <InlineTOC items={toc} />
 

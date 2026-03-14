@@ -16,6 +16,16 @@ const nextConfig: NextConfig = {
         hostname: "images.unsplash.com",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "cdn-images-1.medium.com",
+        port: "",
+      },
+      {
+        protocol: "https",
+        hostname: "miro.medium.com",
+        port: "",
+      },
     ],
     qualities: [75, 100],
   },

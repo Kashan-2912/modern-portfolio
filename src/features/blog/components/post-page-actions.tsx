@@ -110,7 +110,7 @@ export function ViewOptions({
       },
       {
         title: "Open in GitHub",
-        href: `https://github.com/mkash/modern-portfolio/blob/main/src/features/doc/content/${markdownUrl.split("/").slice(-1).join("/")}`,
+        href: `https://github.com/Kashan-2912/modern-portfolio/blob/main/src/features/doc/content/${markdownUrl.split("/").slice(-1).join("/")}`,
         icon: Icons.github,
       },
       {
