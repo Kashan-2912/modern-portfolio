@@ -15,7 +15,7 @@ export const USER: User = {
     "BS Computer Science @ COMSATS",
   ],
   address: "Islamabad, Pakistan",
-  phoneNumber: "+92 345 8032912",
+  phoneNumber: "+92 345 8032912", // WhatsApp
   email: "mkashan2912@gmail.com",
   website: "https://itzkashan.dev",
   jobTitle: "Full Stack Developer",

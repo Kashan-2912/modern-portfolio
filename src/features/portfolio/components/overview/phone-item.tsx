@@ -35,7 +35,7 @@ export function PhoneItem({ phoneNumber }: PhoneItemProps) {
         key: "shift+p",
       },
     })
-    toast.success("Phone number copied")
+    toast.success("WhatsApp number copied")
   })
 
   const { trigger } = useWebHaptics({ debug: true })
@@ -48,12 +48,14 @@ export function PhoneItem({ phoneNumber }: PhoneItemProps) {
 
       <IntroItemContent>
         <IntroItemLink
-          href={isClient ? `tel:${phoneNumberDecoded}` : "#"}
+          href={isClient ? `https://wa.me/${phoneNumberDecoded.replace(/[^\d]/g, "")}` : "#"}
+          target="_blank"
+          rel="noopener"
           aria-label={
-            isClient ? `Call ${phoneNumberFormatted}` : "Phone number"
+            isClient ? `WhatsApp: ${phoneNumberFormatted}` : "WhatsApp number"
           }
         >
-          {isClient ? phoneNumberFormatted : "[Phone protected]"}
+          {isClient ? `WhatsApp: ${phoneNumberFormatted}` : "[WhatsApp protected]"}
         </IntroItemLink>
       </IntroItemContent>
 

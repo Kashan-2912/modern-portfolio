@@ -1,0 +1,5 @@
+1. add cv
+2. add whatsapp number
+3. add add email
+4. ctrl k search edit hoga
+5. remove unused fiules liek registery files, component files etc....

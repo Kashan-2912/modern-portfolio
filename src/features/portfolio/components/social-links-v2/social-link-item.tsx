@@ -1,4 +1,4 @@
-import { ArrowUpRightIcon } from "lucide-react"
+import { ArrowUpRightIcon, DownloadIcon } from "lucide-react"
 import Image from "next/image"
 
 import { UTM_PARAMS } from "@/config/site"
@@ -6,7 +6,7 @@ import type { SocialLink } from "@/features/portfolio/types/social-links"
 import { cn } from "@/lib/utils"
 import { addQueryParams } from "@/utils/url"
 
-export function SocialLinkItem({ icon, title, href }: SocialLink) {
+export function SocialLinkItem({ icon, title, href, download }: SocialLink) {
   return (
     <a
       className={cn(
@@ -14,9 +14,10 @@ export function SocialLinkItem({ icon, title, href }: SocialLink) {
         "max-md:nth-[2n+1]:screen-line-before max-md:nth-[2n+1]:screen-line-after",
         "md:nth-[3n+1]:screen-line-before md:nth-[3n+1]:screen-line-after"
       )}
-      href={addQueryParams(href, UTM_PARAMS)}
-      target="_blank"
-      rel="noopener"
+      href={download ? href : addQueryParams(href, UTM_PARAMS)}
+      target={download ? undefined : "_blank"}
+      rel={download ? undefined : "noopener"}
+      download={download}
     >
       <div className="relative flex size-8 shrink-0 items-center justify-center">
         {icon ? (
@@ -41,7 +42,11 @@ export function SocialLinkItem({ icon, title, href }: SocialLink) {
 
       <h3 className="flex-1 font-medium">{title}</h3>
 
-      <ArrowUpRightIcon className="size-4 text-muted-foreground transition-[rotate] duration-300 group-hover:rotate-45" />
+      {download ? (
+        <DownloadIcon className="size-4 text-muted-foreground transition-transform duration-300 group-hover:scale-110" />
+      ) : (
+        <ArrowUpRightIcon className="size-4 text-muted-foreground transition-[rotate] duration-300 group-hover:rotate-45" />
+      )}
     </a>
   )
 }

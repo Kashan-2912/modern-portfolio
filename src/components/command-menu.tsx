@@ -106,10 +106,17 @@ const PORTFOLIO_LINKS: CommandLinkItem[] = [
     icon: BookmarkIcon,
   },
   {
+    title: "Download CV",
+    href: "/Kashan-CV.pdf",
+    icon: DownloadIcon,
+    keywords: ["cv", "resume", "download", "pdf"],
+  },
+  {
     title: "Download vCard",
     href: "/vcard",
     icon: DownloadIcon,
-  },
+    keywords: ["vcard", "download", "vcf"],
+  }
 ]
 
 const SOCIAL_LINK_ITEMS: CommandLinkItem[] = SOCIAL_LINKS.map((item) => ({
@@ -348,7 +355,7 @@ function CommandMenuInput() {
 
   return (
     <CommandInput
-      placeholder="Type a command or search..."
+      placeholder="Search for projects, blog posts, socials..."
       value={searchValue}
       onValueChange={setSearchValue}
     />

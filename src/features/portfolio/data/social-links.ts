@@ -25,4 +25,17 @@ export const SOCIAL_LINKS: SocialLink[] = [
     icon: "/instagram.svg",
     href: "https://www.instagram.com/itzka_shan/",
   },
+  {
+    title: "Download CV",
+    subtitle: "Kashan-CV.pdf",
+    icon: "/CV.svg",
+    href: "/Kashan-CV.pdf",
+    download: true,
+  },
+  {
+    title: "Email Me",
+    subtitle: "mkashan2912@gmail.com",
+    icon: "/gmail.svg",
+    href: "mailto:mkashan2912@gmail.com",
+  },
 ]
