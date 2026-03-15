@@ -55,7 +55,7 @@ export default function Page() {
         <TechStack />
         <Separator />
 
-        <Blog />
+        <Projects />
         <Separator />
 
         <Experiences />
@@ -64,7 +64,7 @@ export default function Page() {
         <Education />
         <Separator />
 
-        <Projects />
+        <Blog />
         <Separator />
 
         <Certifications />
