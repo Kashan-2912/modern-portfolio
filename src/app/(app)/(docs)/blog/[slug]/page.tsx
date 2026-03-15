@@ -44,11 +44,10 @@ export async function generateMetadata({
     return notFound()
   }
 
-  const { title, description, image, createdAt, updatedAt } = doc.metadata
+  const { title, description, createdAt, updatedAt } = doc.metadata
 
   const postUrl = getDocUrl(doc)
   const ogImage =
-    image ||
     `/og/simple?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`
 
   return {

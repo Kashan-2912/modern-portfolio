@@ -106,12 +106,6 @@ const PORTFOLIO_LINKS: CommandLinkItem[] = [
     icon: BookmarkIcon,
   },
   {
-    title: "Download CV",
-    href: "/Kashan-CV.pdf",
-    icon: DownloadIcon,
-    keywords: ["cv", "resume", "download", "pdf"],
-  },
-  {
     title: "Download vCard",
     href: "/vcard",
     icon: DownloadIcon,
