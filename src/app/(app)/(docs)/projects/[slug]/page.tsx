@@ -10,6 +10,7 @@ import { MDX } from "@/components/mdx"
 import { Button } from "@/components/ui/button"
 import { Prose } from "@/components/ui/typography"
 import { SITE_INFO, X_USERNAME } from "@/config/site"
+import { PROJECTS } from "@/features/portfolio/data/projects"
 import {
   getAllProjectDocs,
   getProjectDocBySlug,
@@ -33,13 +34,15 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const slug = (await params).slug
   const doc = getProjectDocBySlug(slug)
+  const projectInfo = PROJECTS.find((p) => p.slug === slug)
 
   if (!doc) {
     return notFound()
   }
 
-  const { title, description, image, createdAt } = doc.metadata
+  const { title, description, createdAt } = doc.metadata
   const projectUrl = `/projects/${doc.slug}`
+  const image = doc.metadata.image || projectInfo?.cover
   const ogImage =
     image ||
     `/og/simple?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`
@@ -79,12 +82,14 @@ export default async function Page({
 }) {
   const slug = (await params).slug
   const doc = getProjectDocBySlug(slug)
+  const projectInfo = PROJECTS.find((p) => p.slug === slug)
 
   if (!doc) {
     notFound()
   }
 
   const toc = getTableOfContents(doc.content)
+  const coverImage = doc.metadata.image || projectInfo?.cover
 
   return (
     <>
@@ -119,9 +124,9 @@ export default async function Page({
 
         <p className="text-muted-foreground">{doc.metadata.description}</p>
 
-        {doc.metadata.image && (
+        {coverImage && (
           <FramedImage
-            src={doc.metadata.image}
+            src={coverImage}
             alt={doc.metadata.title}
             className="w-full"
           />

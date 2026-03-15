@@ -11,6 +11,7 @@ import {
 } from "@/components/base/ui/collapsible"
 
 import { Tag } from "@/components/ui/tag"
+import { getSkillIcon } from "@/components/icons"
 import { ProseMono } from "@/components/ui/typography"
 import { UTM_PARAMS } from "@/config/site"
 import { addQueryParams } from "@/utils/url"
@@ -148,10 +149,13 @@ export function ProjectItem({
           )}
 
           {project.skills.length > 0 && (
-            <ul className="flex flex-wrap gap-1.5">
+            <ul className="flex flex-wrap gap-2 text-muted-foreground">
               {project.skills.map((skill, index) => (
-                <li key={index} className="flex">
-                  <Tag>{skill}</Tag>
+                <li
+                  key={index}
+                  title={skill}
+                >
+                  {getSkillIcon(skill)}
                 </li>
               ))}
             </ul>

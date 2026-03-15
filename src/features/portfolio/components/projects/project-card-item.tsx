@@ -5,6 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 
 import { Tag } from "@/components/ui/tag"
+import { getSkillIcon } from "@/components/icons"
 import { cn } from "@/lib/utils"
 
 import type { Project } from "../../types/projects"
@@ -97,17 +98,19 @@ export function ProjectCardItem({ project }: { project: Project }) {
 
         {/* Tech Tags */}
         {project.skills.length > 0 && (
-          <div className="space-y-1.5">
+          <div className="space-y-1.5 object-bottom">
             <span className="text-[10px] font-semibold tracking-widest uppercase text-muted-foreground">
               Technologies
             </span>
-            <div className="flex flex-wrap gap-1">
-              {project.skills.slice(0, 5).map((skill) => (
-                <Tag key={skill}>{skill}</Tag>
+            <div className="flex flex-wrap items-center gap-2 text-muted-foreground">
+              {project.skills.map((skill) => (
+                <span
+                  key={skill}
+                  title={skill}
+                >
+                  {getSkillIcon(skill)}
+                </span>
               ))}
-              {project.skills.length > 5 && (
-                <Tag>+{project.skills.length - 5}</Tag>
-              )}
             </div>
           </div>
         )}

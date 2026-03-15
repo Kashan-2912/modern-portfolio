@@ -1,8 +1,14 @@
 "use client"
 
-import { LayoutGridIcon, LayoutListIcon } from "lucide-react"
+import { ChevronDownIcon, LayoutGridIcon, LayoutListIcon } from "lucide-react"
 import { useState } from "react"
 
+import { Button } from "@/components/base/ui/button"
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/base/ui/collapsible"
 import { CollapsibleList } from "@/components/collapsible-list"
 
 import { PROJECTS } from "../../data/projects"
@@ -11,7 +17,7 @@ import { ProjectCardItem } from "./project-card-item"
 import { ProjectItem } from "./project-item"
 
 export function Projects() {
-  const [view, setView] = useState<"list" | "grid">("list")
+  const [view, setView] = useState<"list" | "grid">("grid")
 
   return (
     <Panel id="projects">
@@ -21,28 +27,28 @@ export function Projects() {
           <PanelTitleSup>({PROJECTS.length})</PanelTitleSup>
         </PanelTitle>
 
-        <div className="flex items-center gap-1">
-          <button
-            onClick={() => setView("list")}
-            title="List View"
-            className={`flex size-8 items-center justify-center rounded-md transition-colors ${
-              view === "list"
-                ? "bg-accent text-foreground"
-                : "text-muted-foreground hover:bg-accent hover:text-foreground"
-            }`}
-          >
-            <LayoutListIcon className="size-4" />
-          </button>
+        <div className="flex items-center rounded-full border border-edge bg-muted/30 p-1">
           <button
             onClick={() => setView("grid")}
-            title="Grid View"
-            className={`flex size-8 items-center justify-center rounded-md transition-colors ${
+            className={`flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-semibold tracking-wide transition-all ${
               view === "grid"
-                ? "bg-accent text-foreground"
-                : "text-muted-foreground hover:bg-accent hover:text-foreground"
+                ? "bg-foreground text-background shadow-md"
+                : "text-muted-foreground hover:text-foreground"
             }`}
           >
-            <LayoutGridIcon className="size-4" />
+            <LayoutGridIcon className="size-3.5" />
+            Grid
+          </button>
+          <button
+            onClick={() => setView("list")}
+            className={`flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-semibold tracking-wide transition-all ${
+              view === "list"
+                ? "bg-foreground text-background shadow-md"
+                : "text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            <LayoutListIcon className="size-3.5" />
+            List
           </button>
         </div>
       </PanelHeader>
@@ -54,7 +60,7 @@ export function Projects() {
           renderItem={(item) => <ProjectItem project={item} />}
         />
       ) : (
-        <div className="relative pt-4">
+        <Collapsible className="group/collapsible relative pt-4">
           {/* Absolute overlay for double vertical lines (like blog) */}
           <div className="absolute inset-0 -z-1 grid grid-cols-1 gap-4 max-sm:hidden sm:grid-cols-2">
             <div className="border-r border-edge" />
@@ -62,11 +68,37 @@ export function Projects() {
           </div>
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            {PROJECTS.map((project) => (
+            {PROJECTS.slice(0, 6).map((project) => (
               <ProjectCardItem key={project.id} project={project} />
             ))}
           </div>
-        </div>
+
+          <CollapsibleContent>
+            <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+              {PROJECTS.slice(6).map((project) => (
+                <ProjectCardItem key={project.id} project={project} />
+              ))}
+            </div>
+          </CollapsibleContent>
+
+          {PROJECTS.length > 6 && (
+            <div className="mt-6 flex items-center justify-center pb-2">
+              <CollapsibleTrigger
+                render={
+                  <Button className="gap-2 border-none px-3" size="sm">
+                    <span className="hidden group-data-closed/collapsible:block">
+                      Show More
+                    </span>
+                    <span className="hidden group-data-open/collapsible:block">
+                      Show Less
+                    </span>
+                    <ChevronDownIcon className="size-4 transition-transform duration-200 group-data-open/collapsible:rotate-180" />
+                  </Button>
+                }
+              />
+            </div>
+          )}
+        </Collapsible>
       )}
     </Panel>
   )

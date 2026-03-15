@@ -3,6 +3,7 @@ import {
   CopyIcon,
   FileIcon,
   GalleryHorizontalEndIcon,
+  GlobeIcon,
   MoonStarIcon,
   MouseIcon,
   QuoteIcon,
@@ -12,6 +13,7 @@ import {
   ToggleLeftIcon,
   VibrateIcon,
   ZapIcon,
+  BoxIcon,
 } from "lucide-react"
 
 type IconProps = React.HTMLAttributes<SVGElement>
@@ -276,6 +278,82 @@ export const Icons = {
       />
     </svg>
   ),
+  nextjs: (props: IconProps) => (
+    <svg viewBox="0 0 24 24" aria-hidden {...props}>
+      <path
+        d="M11.964.041C5.352.041 0 5.418 0 12.06c0 6.641 5.352 12.019 11.964 12.019 6.611 0 11.964-5.378 11.964-12.02 0-6.64-5.353-12.018-11.964-12.018Zm5.053 15.65-4.708-6.195H10.1v7.1h1.724v-5.006l4.032 5.304a9.627 9.627 0 0 1-3.892 1.341c-5.244 0-9.495-4.271-9.495-9.54 0-5.268 4.25-9.54 9.495-9.54 5.244 0 9.495 4.272 9.495 9.54 0 2.227-.758 4.286-2.037 5.922l-2.4-3.149V8.544h-1.724v5.526l2.126 2.784c.642-.907 1.127-1.996 1.328-3.181a7.711 7.711 0 0 0-3.328-8.625 7.674 7.674 0 0 0-8.835 12.064 7.671 7.671 0 0 0 10.435-.152Z"
+        fill="currentColor"
+      />
+    </svg>
+  ),
+  framer: (props: IconProps) => (
+    <svg viewBox="0 0 24 24" aria-hidden {...props}>
+      <path
+        d="M4 0h16v8h-8zM4 8h8l8 8H4zM4 16h8v8z"
+        fill="currentColor"
+      />
+    </svg>
+  ),
+  gsap: (props: IconProps) => (
+    <svg viewBox="0 0 24 24" aria-hidden {...props}>
+      <path
+        d="M12.001 0c-4.321 0-7.79 3.011-8.583 6.945h3.084c.732-2.182 2.73-3.791 5.499-3.791 2.373 0 5.176 1.354 5.176 4.706C17.177 12.59 10.237 13.064 7.18 13.911c-2.316.635-4.246 2.315-4.246 5.161 0 2.924 2.193 4.928 5.72 4.928 2.053 0 3.737-.892 4.67-1.892.428.877 1.391 1.892 3.12 1.892h4.633v-3.044h-3.411c-.752 0-1.285-.308-1.285-.889V13.84c0-4.088 3.551-6.19 3.551-9.522C19.932 1.487 16.322 0 12.001 0zm.046 20.669c-2.227 0-3.033-1.428-3.033-2.614 0-2.308 2.327-3.036 4.608-3.376.107-.015.206-.027.301-.038v4.298c-.411.666-1.144 1.73-1.876 1.73z"
+        fill="currentColor"
+      />
+    </svg>
+  ),
+  stripe: (props: IconProps) => (
+    <svg viewBox="0 0 24 24" aria-hidden {...props}>
+      <path
+        d="M11.988 24A12 12 0 1 0 11.988.002 12 12 0 0 0 11.988 24ZM9.673 8.16c0-1.21 1.258-1.636 2.77-1.636 2.222 0 3.792.833 3.792.833l1.107-3.235s-1.889-.92-4.996-.92c-5.275 0-7.863 2.502-7.863 5.474 0 6.645 8.924 5.405 8.924 8.219 0 1.341-1.396 1.803-3.146 1.803-3.033 0-4.436-.97-4.436-.97l-1.12 3.332s1.58.985 5.378.985c5.344 0 8.358-2.636 8.358-5.636 0-7.143-8.768-5.753-8.768-8.249Z"
+        fill="currentColor"
+      />
+    </svg>
+  ),
+  firebase: (props: IconProps) => (
+    <svg viewBox="0 0 24 24" aria-hidden {...props}>
+      <path
+        d="M3.89 15.672L6.255.461A.542.542 0 0 1 7.27.288l2.543 4.771-5.923 10.613Zm16.892 1.325L14.544 1.581a.542.542 0 0 0-.962-.036L9.658 8.03 20.782 16.997ZM10.519 9.584l-2.029 3.655 2.112 3.999a.543.543 0 0 0 .961.02l2.355-4.148-3.399-3.526Zm-6.526 7.42l7.07 3.974c.542.304 1.18.305 1.722 0l7.262-4.081-8.15-8.452-7.904 8.56Z"
+        fill="currentColor"
+      />
+    </svg>
+  ),
+  supabase: (props: IconProps) => (
+    <svg viewBox="0 0 24 24" aria-hidden {...props}>
+      <path
+        d="M21.362 9.354H12V.396a.396.396 0 0 0-.716-.233L2.203 12.424l-.156.222h9.953v8.958a.396.396 0 0 0 .716.233l9.081-12.262.156-.221z"
+        fill="currentColor"
+      />
+    </svg>
+  ),
+  redis: (props: IconProps) => (
+    <svg viewBox="0 0 24 24" aria-hidden {...props}>
+      <path
+        d="M19.165 4.908l-.123-.049-5.186-2.074a.81.81 0 0 0-.6 0c0 .012-5.185 2.073-5.185 2.073a.811.811 0 0 0-.46.495l-7.55 20.211-.002.007a.82.82 0 0 0 .193.856.81.81 0 0 0 .861.161l5.241-2.096 1.488 4.093c.123.33.435.539.775.52l12.18-.545a.818.818 0 0 0 .783-.815v-.004l-.066-15.63a.81.81 0 0 0-.41-.69zM7.221 21.944L11.59 9.94l.439.17-5.02 13.916-2.613 1.045 2.825-3.127zM14.053 5.485L13.25 15.65c-.012.152-.07.29-.168.4l-3.321 3.738L13.27 10.3c.091-.252.327-.424.596-.445l5.882-.47-5.695-3.9z"
+        fill="currentColor"
+      />
+    </svg>
+  ),
+  appwrite: (props: IconProps) => (
+    <svg viewBox="0 0 24 24" aria-hidden {...props}>
+      <path
+        d="M24 10.824v12.251c0 .506-.395.925-.889.925h-5.658c-.494 0-.895-.419-.895-.925v-8.283c0-3.303-2.585-5.996-5.753-5.996-3.168 0-5.752 2.693-5.752 5.996v8.283c0 .506-.4.925-.895.925H.895C.4 24 0 23.58 0 23.075v-8.283C0 7.828 5.419 2.114 12.08 2.114c6.2 0 11.294 5.031 11.907 11.458Z"
+        fill="currentColor"
+      />
+      <path
+        d="M23.111 2.838A5.578 5.578 0 0 1 24 6.136h-5.986c-.516 0-1.127-.665L14.7 2.13C17.755 1.582 20.803 1.6 23.11 2.839"
+        fill="currentColor"
+      />
+    </svg>
+  ),
+  redux: (props: IconProps) => (
+    <svg viewBox="0 0 24 24" aria-hidden {...props}>
+      <path
+        d="M18.84 5.617c-1.39-1.284-3.568-1.574-5.263-1.029l-1.996-.732V0L6.467 4.102l5.114 4.102v-3.86l1.242.45c1.173.435 2.613.882 3.336 1.83.67.876.544 2.222-.294 3.018-2.619 2.477-7.851 5.093-11.205 6.002 0 0 2.296-10.02 9.064-12.724 1.341-.536 2.502-.279 3.052.793.425.827.182 1.956-.566 2.636l1.268 1.488a4.113 4.113 0 0 0 1.36-2.54 4.152 4.152 0 0 0-1.065-2.969M15.54 13.911c1.297.684 2.652 2.1 2.768 3.633.064.846-.275 1.705-1.002 2.052-1.855.885-3.823.195-5.15-1.01-4.14-3.76-6.494-8.775-6.736-12.3-.06-.88.665-2.288 1.465-1.162.905 1.28.985 2.753.479 4.128-1.503 4.09 4.14 7.55 7.64 6.43.993-.318 1.516-1.166 1.237-1.95-1.026-2.894-3.411-4.81-4.66-5.83l1.32-1.319c5.143 4.708 3.733 6.94 3.195 7.647-.947 1.238-2.647 1.157-3.9-.1-1.96-1.96-2.977-5.321-2.977-5.321 0 0-4.041 8.87.653 12.032.932.628 2.008.736 2.77.29s1.17-1.309.917-2.31c-.341-1.353-2.071-3.666-3.885-4.52z"
+        fill="currentColor"
+      />
+    </svg>
+  ),
   resend: (props: IconProps) => (
     <svg viewBox="0 0 24 24" aria-hidden {...props}>
       <path
@@ -528,100 +606,104 @@ export function getIcon(name: string | undefined) {
   return <Icon />
 }
 
-type ComponentIconProps = React.ComponentProps<"svg"> & {
-  variant?: string
-}
+import Image from "next/image"
 
-export function ComponentIcon({ variant, ...props }: ComponentIconProps) {
-  switch (variant) {
-    case "work-experience-component": {
-      return <BriefcaseBusinessIcon {...props} />
-    }
+export function getSkillIcon(skillName: string) {
+  const normalized = skillName.toLowerCase().trim()
 
-    case "react-wheel-picker": {
-      return (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 256 256"
-          aria-hidden
-          {...props}
-        >
-          <path
-            d="M144,16H112A64.07,64.07,0,0,0,48,80v96a64.07,64.07,0,0,0,64,64h32a64.07,64.07,0,0,0,64-64V80A64.07,64.07,0,0,0,144,16Zm2.34,146.34a8,8,0,0,1,11.32,11.32l-24,24a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L120,172.69V83.31L109.66,93.66A8,8,0,0,1,98.34,82.34l24-24a8,8,0,0,1,11.32,0l24,24a8,8,0,0,1-11.32,11.32L136,83.31v89.38Z"
-            fill="currentColor"
-          />
-        </svg>
-      )
-    }
-
-    case "theme-switcher": {
-      return <MoonStarIcon {...props} />
-    }
-
-    case "apple-hello-effect": {
-      return <Icons.apple {...props} />
-    }
-
-    case "shimmering-text": {
-      return <ZapIcon {...props} />
-    }
-
-    case "slide-to-unlock": {
-      return <ToggleLeftIcon {...props} />
-    }
-
-    case "testimonial": {
-      return <QuoteIcon {...props} />
-    }
-
-    case "testimonials-marquee": {
-      return <GalleryHorizontalEndIcon {...props} />
-    }
-
-    case "github-stars": {
-      return <Icons.github {...props} />
-    }
-
-    case "scroll-fade-effect": {
-      return <MouseIcon {...props} />
-    }
-
-    case "consent-manager": {
-      return (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          aria-hidden
-          {...props}
-        >
-          <path
-            d="M12 2.182a1.636 1.636 0 1 0 0 3.273 1.636 1.636 0 0 0 0-3.273ZM8.182 3.818a3.818 3.818 0 1 1 2.002 3.36l-3.006 3.006c.125.23.226.474.3.725h9.044A3.82 3.82 0 0 1 24 12a3.818 3.818 0 0 1-7.478 1.092H7.478c-.098.33-.241.647-.425.939l2.917 2.917a3.818 3.818 0 1 1-1.442 1.644L5.41 15.47a3.818 3.818 0 1 1 .225-6.831l3.007-3.005a3.801 3.801 0 0 1-.46-1.817ZM18.546 12v.004a1.636 1.636 0 1 0 0-.008V12ZM3.818 10.364a1.636 1.636 0 1 0 0 3.272 1.636 1.636 0 0 0 0-3.272Zm6.546 9.818a1.636 1.636 0 1 1 3.272 0 1.636 1.636 0 0 1-3.272 0Z"
-            fill="currentColor"
-            fillRule="evenodd"
-            clipRule="evenodd"
-          />
-        </svg>
-      )
-    }
-
-    case "copy-button": {
-      return <CopyIcon {...props} />
-    }
-
-    case "code-block-command": {
-      return <SquareTerminalIcon {...props} />
-    }
-
-    case "text-flip": {
-      return <SeparatorHorizontalIcon {...props} />
-    }
-
-    case "haptic": {
-      return <VibrateIcon {...props} />
-    }
-
-    default: {
-      return <Icons.react {...props} />
-    }
+  if (normalized === "next.js" || normalized === "nextjs") {
+    return (
+      <>
+        <Image
+          src="/project-showcase/tech-icons/next-light.svg"
+          alt={skillName}
+          width={24}
+          height={24}
+          className="size-5 object-contain hidden [html.light_&]:block"
+        />
+        <Image
+          src="/project-showcase/tech-icons/next-dark.svg"
+          alt={skillName}
+          width={24}
+          height={24}
+          className="size-5 object-contain hidden [html.dark_&]:block"
+        />
+      </>
+    )
   }
+
+  // Map normalized skills to local image paths dynamically
+  let imagePath = ""
+  let isBlackLogo = false
+
+  switch (normalized) {
+    case "appwrite": imagePath = "Appwrite.png"; break;
+    case "bun": imagePath = "Bun.png"; break;
+    case "express": imagePath = "Express.png"; break;
+    case "firebase": imagePath = "Firebase.png"; break;
+    case "github": 
+      imagePath = "GitHub.png";
+      isBlackLogo = true;
+      break;
+    case "mongodb": imagePath = "MongoDB.png"; break;
+    case "nestjs": imagePath = "Nest.png"; break;
+    case "nodejs":
+    case "node.js": imagePath = "Node.png"; break;
+    case "redis": imagePath = "Redis.png"; break;
+    case "redux": imagePath = "Redux.png"; break;
+    case "vercel": 
+      imagePath = "Vercel.png";
+      isBlackLogo = true;
+      break;
+    case "vite": imagePath = "Vite.png"; break;
+    case "clerk": imagePath = "clerk.png"; break;
+    case "convex": imagePath = "convexdb.svg"; break;
+    case "css":
+    case "css3": imagePath = "css.png"; break;
+    case "framer motion": imagePath = "framer-motion.svg"; break;
+    case "google gemini":
+    case "google gemini hackathon": imagePath = "gemini.png"; break;
+    case "gsap": imagePath = "gsap.png"; break;
+    case "html":
+    case "html5": imagePath = "html.png"; break;
+    case "javascript":
+    case "js": imagePath = "js.png"; break;
+    case "json": imagePath = "json.png"; break;
+    case "neon":
+    case "neondb": imagePath = "neondb.png"; break;
+    case "paddle payments":
+    case "paddle": imagePath = "paddle.png"; break;
+    case "pnpm": imagePath = "pnpm.png"; break;
+    case "react": imagePath = "react.png"; break;
+    case "replicate": imagePath = "replicate.svg"; break;
+    case "resend": 
+      imagePath = "resend.png";
+      isBlackLogo = true;
+      break;
+    case "spline":
+    case "spline runtime": 
+      imagePath = "spline.png";
+      isBlackLogo = true;
+      break;
+    case "stripe": imagePath = "stripe.png"; break;
+    case "supabase": imagePath = "supabase.svg"; break;
+    case "tailwind css": imagePath = "tailwind.png"; break;
+    case "typescript":
+    case "ts": imagePath = "ts.png"; break;
+    case "yarn": imagePath = "yarn.svg"; break;
+    default: imagePath = "programing.png"; break; // Fallback icon
+  }
+
+  return (
+    <Image
+      src={`/project-showcase/tech-icons/${imagePath}`}
+      alt={skillName}
+      width={24}
+      height={24}
+      className={`size-5 object-contain ${
+        isBlackLogo ? "dark:invert" : ""
+      }`}
+    />
+  )
 }
+

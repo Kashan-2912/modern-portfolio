@@ -11,6 +11,7 @@ export const PROJECTS: Project[] = [
     },
     link: "https://vizio-room-designer.vercel.app/",
     slug: "vizioroom",
+    cover: "/project-showcase/vizioroom-showcase.png",
     github: "https://github.com/Kashan-2912/ai-interior-designer",
     skills: [
       "Next.js",
@@ -38,17 +39,17 @@ export const PROJECTS: Project[] = [
     },
     link: "http://smartflex-xi.vercel.app/",
     slug: "smartflex",
+    cover: "/project-showcase/smartflex-showcase.png",
     github: "https://github.com/Kashan-2912/smartflex",
     skills: [
       "Next.js",
       "Tailwind CSS",
-      "Vapi AI",
       "Google Gemini",
       "Convex",
       "Clerk",
     ],
     description: `- AI-powered fitness training app
-- Generates personalized workout and diet plans in real-time through voice interaction
+- Generates personalized workout and diet plans in real-time through voice interaction via VapiAI
 - Built with Vapi AI for voice and Google Gemini for intelligence
 - Convex for real-time backend, Clerk for auth
 - Completely free to use`,
@@ -63,6 +64,7 @@ export const PROJECTS: Project[] = [
     },
     link: "https://gitquest.is-a.software/",
     slug: "gitquest",
+    cover: "/project-showcase/gitquest-showcase.png",
     github: "https://github.com/Kashan-2912/gitquest",
     skills: [
       "Next.js",
@@ -87,14 +89,13 @@ export const PROJECTS: Project[] = [
     },
     link: "https://share-mypad.vercel.app/",
     slug: "sharepad",
+    cover: "/project-showcase/sharepad-showcase.png",
     github: "https://github.com/Kashan-2912/textarea-share",
     skills: [
       "Next.js",
       "Tailwind CSS",
       "Framer Motion",
       "TypeScript",
-      "Slate.js",
-      "LZ-String",
     ],
     description: `- Modern, ephemeral collaborative notepad that lives entirely in the URL
 - Content compressed with LZ-String and stored in the URL hash — no database, no login
@@ -113,6 +114,7 @@ export const PROJECTS: Project[] = [
     },
     link: "https://www.itzkashan.dev/",
     slug: "portfolio",
+    cover: "/project-showcase/portfolio-showcase.png",
     github: "https://github.com/Kashan-2912/modern-portfolio",
     skills: [
       "Next.js",
@@ -136,6 +138,7 @@ export const PROJECTS: Project[] = [
     },
     link: "https://ezyshopper.vercel.app/",
     slug: "ezyshopper",
+    cover: "/project-showcase/ezyshopper-showcase.png",
     github: "https://github.com/Kashan-2912/ezyshopper",
     skills: [
       "MongoDB",
@@ -162,17 +165,16 @@ export const PROJECTS: Project[] = [
     },
     link: "https://kissan360.vercel.app/",
     slug: "kissan360",
+    cover: "/project-showcase/kissan360-showcase.png",
     github: "https://github.com/Kashan-2912/kissan360",
     skills: [
       "React",
-      "MantineUI",
-      "Formik",
-      "Yup",
+      "Tailwind CSS",
       "Redux",
       "NestJS",
     ],
     description: `- Production-grade Farm Management System
-- Built with ReactJS, MantineUI, Formik, Yup (for validation) and Redux state management
+- Built with ReactJS, TailwindCSS, Formik, Yup (for validation) and Redux state management
 - Contains Sell and Purchase screens with responsive layouts
 - Different UIs for small and large devices
 - Integrated NestJS backend by calling API endpoints in collaboration with the backend team`,
@@ -188,6 +190,7 @@ export const PROJECTS: Project[] = [
     },
     link: "https://www.sereneheightslahore.com/",
     slug: "serene-heights",
+    cover: "/project-showcase/serenelahore-showcase.png",
     github: "https://github.com/Kashan-2912/serene-new-proj",
     skills: [
       "Next.js",
@@ -196,7 +199,6 @@ export const PROJECTS: Project[] = [
       "TypeScript",
       "Framer Motion",
       "Vercel",
-      "GoDaddy",
     ],
     description: `- Production website for a landmark 19-storey mixed-use commercial development on Gulberg Main Boulevard, Lahore
 - Developed from Figma designs to a fully deployed production site
@@ -214,13 +216,13 @@ export const PROJECTS: Project[] = [
     },
     link: "https://ava-spline-1.vercel.app/",
     slug: "ava",
+    cover: "/project-showcase/ava-showcase.png",
     github: "https://github.com/Kashan-2912/ava-spline-upwork",
     skills: [
       "Next.js",
       "React",
       "Tailwind CSS",
       "Spline",
-      "Spline Runtime",
       "TypeScript",
     ],
     description: `- 24/7 AI-powered front desk voice agent
@@ -239,21 +241,18 @@ export const PROJECTS: Project[] = [
     },
     link: "https://clario-roan.vercel.app/",
     slug: "clario-docs",
+    cover: "/project-showcase/clario-showcase.png",
     github: "https://github.com/Kashan-2912/clarioo",
     skills: [
-      "Opensource Contribution",
-      "Official Next.js Hackathon Project",
       "Next.js",
       "Tailwind CSS",
-      "MDX-React",
       "Supabase",
       "Framer Motion",
-      "OpenRouter API",
     ],
     description: `- Transform API specs into beautiful documentation
 - Upload OpenAPI or Postman collections for AI-powered docs generation
 - Supabase backend with Framer Motion animations
-- OpenRouter API for AI processing
+- OpenRouter API for AI processing, MDX version control editor.
 - No coding required`,
   },
   {
@@ -266,9 +265,9 @@ export const PROJECTS: Project[] = [
     },
     link: "https://artlab-seven.vercel.app/",
     slug: "artlab",
+    cover: "/project-showcase/artlab-showcase.png",
     github: "https://github.com/Kashan-2912/artlab",
     skills: [
-      "Google Gemini Hackathon",
       "Next.js",
       "Tailwind CSS",
       "Google Gemini",
@@ -289,6 +288,7 @@ export const PROJECTS: Project[] = [
     },
     link: "https://learnify-skillup.netlify.app/",
     slug: "learnify",
+    cover: "/project-showcase/learnify-showcase.png",
     github: "https://github.com/Kashan-2912/Learnify-Skillup",
     skills: [
       "React",
@@ -310,6 +310,7 @@ export const PROJECTS: Project[] = [
     },
     link: "https://moodify-moods.netlify.app/",
     slug: "moodify",
+    cover: "/project-showcase/moodify-showcase.png",
     github: "https://github.com/Kashan-2912/Moodify",
     skills: [
       "Next.js",
@@ -331,13 +332,12 @@ export const PROJECTS: Project[] = [
     },
     link: "https://filmpire-movies-app.netlify.app/",
     slug: "filmpire",
+    cover: "/project-showcase/filmpire-showcase.png",
     github: "https://github.com/Kashan-2912/Filmpire-Movie-App",
     skills: [
       "React",
       "Redux",
-      "Material UI",
       "JavaScript",
-      "TMDB API",
     ],
     description: `- Feature-rich movie discovery application
 - TMDB API integration for real-time movie data
@@ -354,6 +354,7 @@ export const PROJECTS: Project[] = [
     },
     link: "https://cyberfiction-clone1.netlify.app/",
     slug: "cyberfiction-clone",
+    cover: "/project-showcase/cyberfiction-showcase.png",
     github: "https://github.com/Kashan-2912/Cyberfiction-clone",
     skills: [
       "HTML5",
