@@ -1,0 +1,101 @@
+---
+title: "VizioRoom — AI-Powered Interior Designer"
+description: "Transform your space with the power of AI! Upload any room screenshot, choose your desired aesthetic, and let AI redesign it into your dream space."
+createdAt: "2024-12-01"
+---
+
+## Features
+
+- **User Authentication** via Clerk
+- **AI Interior Design** using Replicate API
+- **Image Upload** with support for any kind of room image
+- **Custom Style Options** — Modern, Minimal, Bohemian, etc.
+- **Optional Prompts** — Add personal notes to guide AI
+- **Credit-Based System** — Purchase credits via Paddle gateway
+- **Cloud Storage** using Appwrite & Firebase
+
+---
+
+## Tech Stack
+
+| Technology     | Usage                            |
+|----------------|----------------------------------|
+| **Next.js**    | Frontend Framework               |
+| **Clerk**      | User Authentication              |
+| **Replicate**  | AI Model for Room Redesigns      |
+| **Paddle**     | Payment Gateway for Credits      |
+| **Firebase**   | Room Metadata/Realtime Database  |
+| **Appwrite**   | File & Image Storage             |
+| **Tailwind CSS**| Styling and UI                  |
+
+---
+
+## How It Works
+
+### 1. Sign Up / Sign In
+Create an account using Clerk's secure authentication.
+
+### 2. Upload Your Room
+Upload a screenshot or image of any room (living room, bedroom, office, etc).
+
+### 3. Choose Your Style
+Select from pre-defined interior styles such as:
+- Modern
+- Minimalistic
+- Bohemian
+- Industrial
+- Scandinavian
+- Custom (via prompt)
+
+### 4. Let AI Work Its Magic
+Using the Replicate API, your image is transformed into a stunning design based on your choices.
+
+### 5. Save & Download
+Save your new room design or download it for future inspiration.
+
+### 6. Manage Credits
+Credits are required per image transformation. Buy more credits anytime securely via Paddle.
+
+---
+
+## Payment & Credits
+
+- Each image transformation costs 1 credit.
+- Credits can be purchased using the **Paddle** payment gateway.
+- Webhooks securely update user credit balance post-purchase.
+
+---
+
+## Project Structure
+
+```
+/components      → Reusable UI Components  
+/app             → Next.js Routes  
+/lib             → Utility Functions  
+/config          → Config for third party services  
+/public          → Static Assets  
+```
+
+---
+
+## API & Credits
+
+- Replicate API powers the AI model behind the redesign.
+- Credit deduction is triggered on design generation.
+- Paddle webhook verifies payment and adds credits.
+
+---
+
+## Future Improvements
+
+- Drag-and-drop furniture placement
+- 3D visualization of redesign
+- Multi-language support
+- More design styles (e.g., Japandi, Rustic, Mid-century)
+
+---
+
+## Links
+
+- [Live Demo](https://vizio-room-designer.vercel.app/)
+- [GitHub](https://github.com/Kashan-2912/ai-interior-designer)

@@ -24,6 +24,10 @@ export type Project = {
   logo?: string
   /** Dark mode logo variant; when set, `logo` is used for light mode. */
   logoDark?: string
+  /** Cover/preview image for the card grid view. */
+  cover?: string
+  /** URL slug for the project detail page (e.g. "vizioroom"). */
+  slug?: string
   /** Whether the project card is expanded by default in the UI. */
   isExpanded?: boolean
 }

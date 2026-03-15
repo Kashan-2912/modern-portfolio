@@ -1,0 +1,77 @@
+---
+title: "EzyShopper — Full-Stack E-Commerce Platform"
+description: "A dynamic e-commerce platform with admin dashboard, analytics, Redis caching, Stripe payments, and product recommendations."
+createdAt: "2023-11-01"
+---
+
+## Overview
+
+EzyShopper is a dynamic e-commerce platform designed to revolutionize your online shopping experience. With an intuitive interface, seamless navigation, and personalized recommendations, EzyShopper makes shopping easy, enjoyable, and efficient.
+
+---
+
+## Administrator Features
+
+- **Product Management** — Add products with details including image upload via Cloudinary
+- **Featured Products** — Mark any product as featured for homepage promotion
+- **Product Deletion** — Remove products from the catalog
+- **Analytics Dashboard** — View total users, total products, total sales, and total revenue in interactive chart format
+
+---
+
+## User Features
+
+- **Home Page** — Browse all products in one place
+- **Authentication** — Login / Signup with JWT-based auth
+- **Shopping Cart** — Full cart management with order summary
+- **Featured Products** — Highlighted products served from Redis cache for fast loading
+- **Product Recommendations** — "People also bought" powered by MongoDB aggregation pipelines
+- **Coupon System** — Apply coupons on cart if last order was $200+
+- **Stripe Payments** — Secure credit/debit card payments via Stripe
+- **Order Flow** — Purchase success / cancel pages after payment
+
+---
+
+## Tech Stack
+
+### Frontend
+- React
+- Tailwind CSS
+- Framer Motion (animations)
+
+### Backend
+- Node.js & Express
+- MongoDB
+
+### Other
+- Zustand (state management)
+- Recharts (analytics charts)
+- Stripe.js (payments)
+- Cloudinary (image uploads)
+- Redis (caching)
+- JWT (authentication)
+
+---
+
+## Getting Started
+
+```bash
+git clone https://github.com/Kashan-2912/EzyShopper.git
+cd EzyShopper
+npm install          # Install root dependencies
+cd frontend && npm install  # Install frontend dependencies
+```
+
+### Run the Server
+
+```bash
+npm run dev          # Start backend (root)
+cd frontend && npm run dev  # Start frontend
+```
+
+---
+
+## Links
+
+- [Live Demo](https://ezyshopper.vercel.app/)
+- [GitHub](https://github.com/Kashan-2912/ezyshopper)

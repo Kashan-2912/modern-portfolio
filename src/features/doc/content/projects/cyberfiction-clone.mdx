@@ -1,0 +1,66 @@
+---
+title: "Cyberfiction Clone — 3D Scroll-Animated Experience"
+description: "An immersive, 3D scroll-animated web experience exploring the Metaverse with 300-frame image sequence rendering on HTML Canvas, GSAP, and Locomotive Scroll."
+createdAt: "2023-02-01"
+---
+
+## About
+
+**Cyberfiction Clone** is a visually striking front-end web application inspired by the original Cyberfiction website. It delivers a "real story in the metaverse" through highly engaging, scroll-triggered animations.
+
+The core relies on a high-speed rendering of a **300-frame 3D image sequence** drawn onto an HTML `<canvas>`, meticulously synchronized with user scrolling — creating a seamless, movie-like 3D interaction.
+
+---
+
+## Features
+
+- **3D Image Sequence Animation** — Smoothly scrubs through 300 ultra-high-quality images of a 3D character using HTML Canvas
+- **Smooth Scrolling** — Locomotive Scroll for buttery-smooth inertia-based scrolling
+- **Scroll-Triggered Animations** — GSAP ScrollTrigger pins sections, reveals text, and syncs canvas animation to scroll position
+- **Responsive Canvas** — Dynamically resizes to scale across different screen sizes
+- **Modern Typography** — Sleek, bold Gilroy font for a cyberpunk/futuristic aesthetic
+
+---
+
+## Tech Stack
+
+- **HTML5** — Structure and semantic elements
+- **CSS3** — Styling, positioning, layout
+- **Vanilla JavaScript** — Canvas manipulation and sequence handling
+- **GSAP (GreenSock)** — Industry standard for high-performance web animations
+- **ScrollTrigger** — GSAP plugin for scroll-triggered animations
+- **Locomotive Scroll** — Smooth scrolling library
+
+---
+
+## How It Works
+
+1. **The Canvas Trick** — Pre-loads an array of `.png` frames. As the user scrolls, JavaScript calculates the scroll percentage and draws the corresponding frame onto the `<canvas>`
+2. **Smart Scaling** — The `render()` function dynamically calculates image scale using `Math.max(scaleX, scaleY)` without stretching the aspect ratio
+3. **Locomotive + GSAP Integration** — Proxy methods (`ScrollTrigger.scrollerProxy`) let GSAP track the virtual scrollbar position from Locomotive Scroll
+
+---
+
+## Getting Started
+
+```bash
+git clone https://github.com/Kashan-2912/cyberfiction-clone.git
+cd cyberfiction-clone
+npx serve .
+```
+
+Or open `index.html` with VS Code Live Server.
+
+---
+
+## Links
+
+- [GitHub](https://github.com/Kashan-2912/cyberfiction-clone)
+
+---
+
+## Acknowledgements
+
+- Original inspiration: [Cyberfiction.io](https://cyberfiction.io/)
+- Fonts: Gilroy Free Webfont
+- Animation engine: GreenSock (GSAP)

@@ -1,0 +1,56 @@
+---
+title: "Filmpire — Movie Search Application"
+description: "A sleek movie search application for discovering movies with instant search, visual grid layout, and poster artwork from the OMDB API."
+createdAt: "2023-04-01"
+---
+
+## Overview
+
+Filmpire is your personal movie discovery engine. It allows you to easily search for any movie and instantly see its details — release year, media type, and original poster artwork. Opens with a default showcase so you can get started immediately.
+
+---
+
+## Features
+
+- **Instant Search** — Type any movie name and get instant results
+- **Visual Grid** — Aesthetic, responsive grid layout with movie posters, titles, and release years
+- **Default Showcase** — Opens with pre-loaded movie results (no empty screen)
+- **Fallback Imagery** — Clean placeholder images when official posters aren't available
+
+---
+
+## Tech Stack
+
+- **Frontend**: React 18 (Create React App)
+- **Styling**: Custom Vanilla CSS — responsive glassmorphism and grid-based interface
+- **API**: Browser native `fetch` to OMDB API
+- **State**: React Hooks (`useState`, `useEffect`)
+
+---
+
+## Core Components
+
+- **`App.js`** — The brain of the application. Stores search term and movies array state. Handles async fetch requests and conditionally renders movie grid or "No movies found" fallback.
+- **`MovieCard.jsx`** — Presentational component. Outputs poster image, type, title, and release year for each movie in the CSS grid.
+
+---
+
+## Getting Started
+
+```bash
+cd filmpire
+npm install
+npm start
+```
+
+### Environment Variables
+
+```env
+REACT_APP_API_URL="https://www.omdbapi.com?apikey=[YOUR_API_KEY]"
+```
+
+---
+
+## Links
+
+- [GitHub](https://github.com/Kashan-2912/filmpire)

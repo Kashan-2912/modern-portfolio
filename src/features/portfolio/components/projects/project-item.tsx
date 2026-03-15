@@ -9,7 +9,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/base/ui/collapsible"
-import { Markdown } from "@/components/markdown"
+
 import { Tag } from "@/components/ui/tag"
 import { ProseMono } from "@/components/ui/typography"
 import { UTM_PARAMS } from "@/config/site"
@@ -143,7 +143,7 @@ export function ProjectItem({
         <div className="space-y-4 border-t border-edge p-4">
           {project.description && (
             <ProseMono>
-              <Markdown>{project.description}</Markdown>
+              <SimpleDescription text={project.description} />
             </ProseMono>
           )}
 
@@ -161,3 +161,25 @@ export function ProjectItem({
     </Collapsible>
   )
 }
+
+function SimpleDescription({ text }: { text: string }) {
+  const lines = text.split("\n").filter((line) => line.trim())
+  const bullets = lines.filter((line) => line.trim().startsWith("- "))
+  const nonBullets = lines.filter((line) => !line.trim().startsWith("- "))
+
+  return (
+    <>
+      {nonBullets.length > 0 && (
+        <p>{nonBullets.map((line) => line.trim()).join(" ")}</p>
+      )}
+      {bullets.length > 0 && (
+        <ul>
+          {bullets.map((line, i) => (
+            <li key={i}>{line.trim().replace(/^- /, "")}</li>
+          ))}
+        </ul>
+      )}
+    </>
+  )
+}
+

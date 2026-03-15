@@ -1,0 +1,100 @@
+---
+title: "itzkashan.dev — Developer Portfolio & Blog"
+description: "A minimal, pixel-perfect developer portfolio and blog built with obsessive attention to detail using Next.js 16, TypeScript, and Tailwind CSS v4."
+createdAt: "2026-03-13"
+---
+
+## What Makes This Different
+
+This isn't a template. It's a **hand-crafted, performance-obsessed** portfolio built from scratch with a design language inspired by terminal UIs, engineering blueprints, and pixel-grid aesthetics.
+
+- **Blueprint Grid System** — Double-line borders, crosshatch separators, and screen-line patterns create a distinctive engineering aesthetic
+- **Flawless Dark/Light Mode** — Every element, every border, every shadow — meticulously tuned for both themes
+- **Static-First Architecture** — `force-static` routes, cached data readers, zero client-side data fetching where possible
+- **Responsive to the Pixel** — From 320px mobile to ultrawide — every breakpoint is intentional
+
+---
+
+## Sections
+
+| Section | Description |
+|---|---|
+| **Profile Header** | Avatar with electric glow effect, verified badge, name pronunciation, job title, vCard download |
+| **Overview** | Flip-text sentences, location with live timezone, contact info |
+| **About** | Rich markdown bio with highlighted stats |
+| **Testimonials** | Auto-scrolling marquee of recommendations |
+| **GitHub Contributions** | Live contribution graph pulled from GitHub |
+| **Tech Stack** | 50+ technology icons organized in a visual grid |
+| **Projects** | Dual-view (list/grid toggle) with collapsible details, theme-aware logos, and full MDX detail pages |
+| **Experience** | Timeline with company logos, animated ping for current roles |
+| **Education** | Academic history with institution details |
+| **Blog** | MDX-powered blog with syntax highlighting, TOC, keyboard navigation, and RSS feed |
+| **Certifications** | Certificate cards with credential links |
+| **Bookmarks** | Curated developer reads and resources |
+
+---
+
+## Tech Stack
+
+| Layer | Technologies |
+|---|---|
+| **Framework** | Next.js 16 (App Router, Turbopack) |
+| **Language** | TypeScript 5.8 |
+| **Styling** | Tailwind CSS v4, CSS Variables |
+| **UI** | Radix UI, Base UI, Lucide Icons, cmdk (⌘K search) |
+| **Content** | MDX (next-mdx-remote), fumadocs-core (TOC), gray-matter |
+| **Markdown** | react-markdown, remark-gfm, rehype-pretty-code (Shiki) |
+| **Animation** | Motion (Framer Motion), react-fast-marquee |
+| **State** | Jotai, nuqs (URL state) |
+| **Analytics** | PostHog, OpenPanel |
+| **Fonts** | Geist Sans & Geist Mono |
+| **SEO** | JSON-LD (schema-dts), RSS feed, OG images, sitemap |
+| **Deploy** | Vercel |
+
+---
+
+## Design Details
+
+### The Grid Language
+
+Every section is wrapped in the signature **panel system** — double-line borders on the sides, crosshatch separators between sections, and screen-line pseudo-elements creating the blueprint grid effect.
+
+### Typography
+
+- **Geist Sans** — Primary typeface for headings and body
+- **Geist Mono** — Code blocks, technical details, metadata
+
+### Color System
+
+- CSS custom properties for all colors — instantly themeable
+- HSL-based palette that shifts cleanly between light and dark
+
+### Animations
+
+- **Flip text** — Rotating taglines in the overview
+- **Testimonial marquee** — Infinite scroll with pause-on-hover
+- **Ping indicators** — Animated dots for current job / ongoing projects
+- **Collapsible sections** — Smooth expand/collapse with chevron rotation
+
+---
+
+## Content Management
+
+All content is data-driven — edit TypeScript files, not components:
+
+| Content | File |
+|---|---|
+| Personal info | `user.ts` |
+| Projects | `projects.ts` |
+| Experience | `experiences.ts` |
+| Education | `education.ts` |
+| Certifications | `certifications.ts` |
+| Blog posts | `content/blog/*.mdx` |
+| Project pages | `content/projects/*.mdx` |
+
+---
+
+## Links
+
+- [Live Site](https://itzkashan.dev)
+- [GitHub](https://github.com/Kashan-2912/modern-portfolio)

@@ -10,6 +10,7 @@ export const PROJECTS: Project[] = [
       end: "February 2025",
     },
     link: "https://vizio-room-designer.vercel.app/",
+    slug: "vizioroom",
     github: "https://github.com/Kashan-2912/ai-interior-designer",
     skills: [
       "Next.js",
@@ -36,6 +37,7 @@ export const PROJECTS: Project[] = [
       end: "September 2025",
     },
     link: "http://smartflex-xi.vercel.app/",
+    slug: "smartflex",
     github: "https://github.com/Kashan-2912/smartflex",
     skills: [
       "Next.js",
@@ -60,6 +62,7 @@ export const PROJECTS: Project[] = [
       end: "Present",
     },
     link: "https://gitquest.is-a.software/",
+    slug: "gitquest",
     github: "https://github.com/Kashan-2912/gitquest",
     skills: [
       "Next.js",
@@ -83,6 +86,7 @@ export const PROJECTS: Project[] = [
       end: "March 2026",
     },
     link: "https://share-mypad.vercel.app/",
+    slug: "sharepad",
     github: "https://github.com/Kashan-2912/textarea-share",
     skills: [
       "Next.js",
@@ -99,6 +103,30 @@ export const PROJECTS: Project[] = [
 - Premium dark-first UI with electric border animations and magnetic cursor effects`,
   },
   {
+    id: "portfolio",
+    title: "Portfolio",
+    logo: "/project-logo/portfolio-light.svg",
+    logoDark: "/project-logo/portfolio-dark.svg",
+    period: {
+      start: "March 2026",
+      end: "Present",
+    },
+    link: "https://www.itzkashan.dev/",
+    slug: "portfolio",
+    github: "https://github.com/Kashan-2912/modern-portfolio",
+    skills: [
+      "Next.js",
+      "Tailwind CSS",
+      "TypeScript",
+      "Framer Motion",
+    ],
+    description: `- Modern, responsive portfolio website
+- Built with Next.js and Tailwind CSS
+- Includes a dynamic testimonial marquee and GitHub contributions
+- Represents my projects, experiences, education, blog rss feed and bookmarks.
+- Deployed on Vercel, and DNS configured with domain.`,
+  },
+  {
     id: "ezyshopper",
     title: "EzyShopper",
     logo: "/project-logo/ezyshopper.png",
@@ -107,6 +135,7 @@ export const PROJECTS: Project[] = [
       end: "March 2024",
     },
     link: "https://ezyshopper.vercel.app/",
+    slug: "ezyshopper",
     github: "https://github.com/Kashan-2912/ezyshopper",
     skills: [
       "MongoDB",
@@ -132,6 +161,7 @@ export const PROJECTS: Project[] = [
       end: "September 2025",
     },
     link: "https://kissan360.vercel.app/",
+    slug: "kissan360",
     github: "https://github.com/Kashan-2912/kissan360",
     skills: [
       "React",
@@ -157,6 +187,7 @@ export const PROJECTS: Project[] = [
       end: "March 2026",
     },
     link: "https://www.sereneheightslahore.com/",
+    slug: "serene-heights",
     github: "https://github.com/Kashan-2912/serene-new-proj",
     skills: [
       "Next.js",
@@ -182,6 +213,7 @@ export const PROJECTS: Project[] = [
       end: "March 2026",
     },
     link: "https://ava-spline-1.vercel.app/",
+    slug: "ava",
     github: "https://github.com/Kashan-2912/ava-spline-upwork",
     skills: [
       "Next.js",
@@ -206,6 +238,7 @@ export const PROJECTS: Project[] = [
       end: "November 2024",
     },
     link: "https://clario-roan.vercel.app/",
+    slug: "clario-docs",
     github: "https://github.com/Kashan-2912/clarioo",
     skills: [
       "Opensource Contribution",
@@ -232,6 +265,7 @@ export const PROJECTS: Project[] = [
       end: "May 2024",
     },
     link: "https://artlab-seven.vercel.app/",
+    slug: "artlab",
     github: "https://github.com/Kashan-2912/artlab",
     skills: [
       "Google Gemini Hackathon",
@@ -254,6 +288,7 @@ export const PROJECTS: Project[] = [
       end: "August 2023",
     },
     link: "https://learnify-skillup.netlify.app/",
+    slug: "learnify",
     github: "https://github.com/Kashan-2912/Learnify-Skillup",
     skills: [
       "React",
@@ -274,6 +309,7 @@ export const PROJECTS: Project[] = [
       end: "November 2023",
     },
     link: "https://moodify-moods.netlify.app/",
+    slug: "moodify",
     github: "https://github.com/Kashan-2912/Moodify",
     skills: [
       "Next.js",
@@ -294,6 +330,7 @@ export const PROJECTS: Project[] = [
       end: "March 2023",
     },
     link: "https://filmpire-movies-app.netlify.app/",
+    slug: "filmpire",
     github: "https://github.com/Kashan-2912/Filmpire-Movie-App",
     skills: [
       "React",
@@ -316,6 +353,7 @@ export const PROJECTS: Project[] = [
       end: "June 2023",
     },
     link: "https://cyberfiction-clone1.netlify.app/",
+    slug: "cyberfiction-clone",
     github: "https://github.com/Kashan-2912/Cyberfiction-clone",
     skills: [
       "HTML5",

@@ -1,0 +1,69 @@
+---
+title: "AVA — 24/7 Conversational AI Voice Agent"
+description: "A modern landing page for an advanced conversational AI voice agent featuring interactive 3D Spline scenes that react to voice input."
+createdAt: "2025-12-01"
+---
+
+## Project Overview
+
+**AVA** is a modern, responsive landing page for an advanced conversational AI voice agent. AVA never sleeps — it runs 24/7, handles multiple languages, reduces missed calls by 90%, and converts service calls into booked revenue.
+
+The project highlights an interactive 3D hero section powered by Spline, enabling users to interact with 3D models and switch between different scenes to visualize the AI agent in action.
+
+---
+
+## Key Features
+
+- **Interactive 3D Experience** — Real-time 3D models with playback controls and scene switching via `@splinetool/react-spline`
+- **Dynamic Theming** — Seamless Dark and Light mode toggling using `next-themes`
+- **Responsive Navigation** — Interactive top nav with dropdown menus, CTA buttons, and responsive design
+- **Floating Information Cards** — Dynamic UI cards representing real-time voice agent activities
+- **Stat Highlights** — Grid-based statistics visualizing AVA's impact on business operations
+- **Modern Typography & Design** — Multiple optimized Google fonts (Geist, Sora, Space Grotesk) with Tailwind CSS v4
+
+---
+
+## Tech Stack
+
+| Tech | Purpose |
+|---|---|
+| **Next.js 16** | App Router framework |
+| **React 19** | UI library |
+| **Tailwind CSS v4** | Styling |
+| **Spline** | 3D graphics (`@splinetool/react-spline`, `@splinetool/runtime`) |
+| **next-themes** | Dark/Light mode |
+| **TypeScript** | Type safety |
+
+---
+
+## 3D Spline Integration
+
+The 3D component exposes utilities to control interaction:
+
+- `startSplineAnimation()` / `stopSplineAnimation()` — Explicit controls for Spline animations
+- `toggleSplineAnimation()` — Toggle binding for interactive UI elements like "Test It Yourself"
+- Scene URLs configurable via `.env` variables
+
+---
+
+## Project Structure
+
+```
+ava-spline/
+├── app/
+│   ├── components/
+│   │   ├── HeroSection.tsx     # Main hero, navigation, floating UI cards
+│   │   ├── Spline.tsx          # 3D model component
+│   │   └── ThemeProvider.tsx   # Dark/light mode wrapper
+│   ├── globals.css             # Global Tailwind and CSS variables
+│   ├── layout.tsx              # Root layout
+│   └── page.tsx                # Main entry page
+└── public/                     # Static assets
+```
+
+---
+
+## Links
+
+- [Live Demo](https://ava-spline-1.vercel.app/)
+- [GitHub](https://github.com/Kashan-2912/ava-spline-upwork)

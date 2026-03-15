@@ -1,0 +1,71 @@
+---
+title: "Clario Docs — API Documentation Generator"
+description: "Transform API specs into beautiful documentation. Upload OpenAPI or Postman collections for AI-powered docs generation with interactive editing."
+createdAt: "2024-10-01"
+---
+
+## Features
+
+- **Easy API Spec Upload** — Upload OpenAPI (JSON/YAML) or Postman collections in seconds
+- **AI-Powered Enhancement** — Auto-generate clear descriptions, code examples, and usage patterns using advanced LLMs (Anthropic Claude 3.5 Sonnet via OpenRouter)
+- **Beautiful Documentation UI** — Modern, responsive interface with dark mode support
+- **Multiple Templates** — Minimal, Developer Hub, Enterprise, or Interactive templates
+- **Interactive Editor** — Tweak generated documentation in a split-pane Monaco Editor
+- **Custom Domain Support** — Host on the platform or bring your own domain
+- **Export Options** — Download as PDF or ZIP files
+
+---
+
+## Tech Stack
+
+| Tech | Purpose |
+|---|---|
+| **Next.js 15.2** | Framework (React 19) |
+| **Tailwind CSS v4** | Styling with Framer Motion and Radix UI |
+| **Supabase** | Authentication & Database |
+| **OpenRouter** | LLM integration for AI generation |
+| **Monaco Editor** | Interactive code editor |
+| **@dnd-kit** | Drag & Drop functionality |
+
+---
+
+## Project Structure
+
+```
+clariodocs/
+├── src/
+│   ├── app/                 # Next.js App Router
+│   │   ├── (dashboard)/     # Dashboard, doc generation, editor
+│   │   └── api/             # API Routes
+│   ├── components/          # Reusable UI components
+│   ├── hooks/               # Custom React hooks
+│   ├── lib/                 # Service functions
+│   ├── services/            # Business logic
+│   └── types/               # TypeScript definitions
+```
+
+---
+
+## Getting Started
+
+```bash
+git clone https://github.com/Kashan-2912/clarioo.git
+cd clariodocs
+npm install
+npm run dev
+```
+
+### Environment Variables
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+OPENROUTER_API_KEY=your_openrouter_api_key
+```
+
+---
+
+## Links
+
+- [Live Demo](https://clario-roan.vercel.app/)
+- [GitHub](https://github.com/Kashan-2912/clarioo)
