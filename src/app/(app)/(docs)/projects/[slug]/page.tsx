@@ -7,6 +7,7 @@ import { notFound } from "next/navigation"
 import { FramedImage } from "@/components/embed"
 import { InlineTOC } from "@/components/inline-toc"
 import { MDX } from "@/components/mdx"
+import { ShareMenu } from "@/components/share-menu"
 import { Button } from "@/components/ui/button"
 import { Prose } from "@/components/ui/typography"
 import { SITE_INFO, X_USERNAME } from "@/config/site"
@@ -105,6 +106,8 @@ export default async function Page({
             Projects
           </Link>
         </Button>
+
+        <ShareMenu title={doc.metadata.title} url={`/projects/${doc.slug}`} />
       </div>
 
       <div className="screen-line-before screen-line-after">

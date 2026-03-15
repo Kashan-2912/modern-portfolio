@@ -28,13 +28,15 @@ export async function GET(request: Request) {
         <div tw="absolute flex bottom-16 right-16">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 512 256"
+            fill="none"
+            viewBox="0 0 576 320"
+            aria-hidden
             width={128}
             height={64}
           >
             <path
               fill="currentColor"
-              d="M192 256H64v-64h128v64ZM448 64H320v128h128v64H256V0h192v64ZM64 192H0V64h64v128ZM512 192h-64V64h64v128ZM192 64H64V0h128v64Z"
+              d="M0 0h64v320H0zM192 0h64v64h-64zM128 64h64v64h-64zM64 128h64v64h-64zM128 192h64v64h-64zM192 256h64v64h-64zM384 0h64v64h-64zM448 0h64v64h-64zM320 64h64v64h-64zM512 64h64v64h-64zM320 128h256v64h-256zM320 192h64v64h-64zM512 192h64v64h-64zM320 256h64v64h-64zM512 256h64v64h-64z"
             />
           </svg>
         </div>
