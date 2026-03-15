@@ -3,7 +3,6 @@
 import { useCommandState } from "cmdk"
 import type { LucideProps } from "lucide-react"
 import {
-  AwardIcon,
   BookmarkIcon,
   BoxIcon,
   BriefcaseBusinessIcon,
@@ -95,11 +94,6 @@ const PORTFOLIO_LINKS: CommandLinkItem[] = [
     title: "Projects",
     href: "/#projects",
     icon: BoxIcon,
-  },
-  {
-    title: "Honors & Awards",
-    href: "/#awards",
-    icon: AwardIcon,
   },
   {
     title: "Certifications",

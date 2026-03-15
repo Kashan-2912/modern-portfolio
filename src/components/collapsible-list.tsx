@@ -24,26 +24,26 @@ export function CollapsibleList<T>({
 }) {
   return (
     <Collapsible className="group/collapsible">
-      {items.slice(0, max).map((award, index) => (
+      {items.slice(0, max).map((item, index) => (
         <Slot.Root
-          key={typeof keyExtractor === "function" ? keyExtractor(award) : index}
+          key={typeof keyExtractor === "function" ? keyExtractor(item) : index}
           className="border-b border-edge"
         >
-          {renderItem(award)}
+          {renderItem(item)}
         </Slot.Root>
       ))}
 
       <CollapsibleContent>
-        {items.slice(max).map((award, index) => (
+        {items.slice(max).map((item, index) => (
           <Slot.Root
             key={
               typeof keyExtractor === "function"
-                ? keyExtractor(award)
+                ? keyExtractor(item)
                 : max + index
             }
             className="border-b border-edge"
           >
-            {renderItem(award)}
+            {renderItem(item)}
           </Slot.Root>
         ))}
       </CollapsibleContent>
