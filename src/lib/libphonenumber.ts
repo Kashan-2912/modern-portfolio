@@ -1,24 +1,18 @@
-import type { MetadataJson } from "libphonenumber-js/core"
-import { formatIncompletePhoneNumber as _formatIncompletePhoneNumber } from "libphonenumber-js/core"
-
-import metadataJson from "@/assets/libphonenumber.metadata.json"
-
-const metadata = metadataJson as MetadataJson
+import { formatIncompletePhoneNumber as _formatIncompletePhoneNumber } from "libphonenumber-js"
 
 /**
- * Formats an incomplete phone number string according to the metadata provided (currently only for Viet Nam).
+ * Formats an incomplete phone number string according to universal metadata.
  *
- * Uses `libphonenumber-js`'s `formatIncompletePhoneNumber` function with custom metadata.
+ * Uses `libphonenumber-js`'s standard formatting which supports all countries including Pakistan.
  *
  * @param phone - The phone number string to format (may be incomplete).
  * @returns The formatted phone number string.
  *
  * @remarks
- * - Only Viet Nam (VN) metadata is included by default. To add more countries, update and run the `generate-libphonenumber-metadata` script in `package.json`.
  * - This function is useful for formatting user input as they type a phone number.
  *
- * @see https://www.npmjs.com/package/libphonenumber-js#customizing-metadata
+ * @see https://www.npmjs.com/package/libphonenumber-js
  */
 export function formatIncompletePhoneNumber(phone: string) {
-  return _formatIncompletePhoneNumber(phone, metadata)
+  return _formatIncompletePhoneNumber(phone)
 }
