@@ -20,6 +20,10 @@ export const MAIN_NAV: NavItem[] = [
     href: "/",
   },
   {
+    title: "Projects",
+    href: "/#projects",
+  },
+  {
     title: "Blog",
     href: "/blog",
   },
@@ -39,3 +43,4 @@ export const SPONSORSHIP_URL = ""
 export const UTM_PARAMS = {
   utm_source: "kashanashraf-portfolio",
 }
+

@@ -23,7 +23,7 @@ export function ProjectCardItem({ project }: { project: Project }) {
     >
       {/* Cover Image */}
       {project.cover ? (
-        <div className="relative select-none [&_img]:aspect-video [&_img]:rounded-xl">
+        <div className="relative select-none rounded-xl [&_img]:w-full [&_img]:h-auto [&_img]:object-cover [&_img]:rounded-xl">
           <Image
             src={project.cover}
             alt={project.title}
@@ -33,21 +33,21 @@ export function ProjectCardItem({ project }: { project: Project }) {
             unoptimized
           />
 
-          <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-black/10 ring-inset dark:ring-white/10" />
+          <div className="pointer-events-none absolute inset-0 rounded-xl" />
 
-          {project.link && (
+          {/* {project.link && (
             <a
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="absolute bottom-3 left-3 rounded-md bg-background/80 px-3 py-1.5 text-xs font-semibold tracking-wider uppercase backdrop-blur-sm transition-colors hover:bg-background"
+              className="absolute bottom-3 left-3 rounded-md bg-transparent px-3 py-1.5 text-xs font-semibold tracking-wider uppercase backdrop-blur-sm transition-colors text-white"
             >
               Preview
             </a>
-          )}
+          )} */}
         </div>
       ) : (
-        <div className="flex aspect-video w-full items-center justify-center rounded-xl bg-muted">
+        <div className="flex h-60 w-full items-center justify-center rounded-xl bg-muted sm:h-64">
           <span className="text-sm text-muted-foreground">No Preview</span>
         </div>
       )}
