@@ -7,6 +7,7 @@ import { ThemeProvider } from "next-themes"
 import { TooltipProvider as BaseTooltipProvider } from "@/components/base/ui/tooltip"
 import { TooltipProvider as RadixTooltipProvider } from "@/components/ui/tooltip"
 
+import { ConsentManagerClient } from "./consent-manager-client"
 import { Toaster } from "./ui/sonner"
 
 export function Providers({ children }: { children: React.ReactNode }) {
@@ -20,18 +21,20 @@ export function Providers({ children }: { children: React.ReactNode }) {
         defaultTheme="system"
         attribute="class"
       >
-        <AppProgressProvider
-          color="var(--foreground)"
-          height="2px"
-          delay={500}
-          options={{ showSpinner: false }}
-        >
-          <BaseTooltipProvider>
-            <RadixTooltipProvider>{children}</RadixTooltipProvider>
-          </BaseTooltipProvider>
-        </AppProgressProvider>
+        <ConsentManagerClient>
+          <AppProgressProvider
+            color="var(--foreground)"
+            height="2px"
+            delay={500}
+            options={{ showSpinner: false }}
+          >
+            <BaseTooltipProvider>
+              <RadixTooltipProvider>{children}</RadixTooltipProvider>
+            </BaseTooltipProvider>
+          </AppProgressProvider>
 
-        <Toaster position="top-center" />
+          <Toaster position="top-center" />
+        </ConsentManagerClient>
       </ThemeProvider>
     </JotaiProvider>
   )
