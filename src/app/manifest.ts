@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next"
 
-import { SITE_INFO } from "@/config/site"
+import { META_THEME_COLORS, SITE_INFO } from "@/config/site"
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
@@ -18,5 +18,7 @@ export default function manifest(): MetadataRoute.Manifest {
     start_url: "/?utm_source=pwa",
     display: "standalone",
     scope: "/",
+    theme_color: META_THEME_COLORS.light,
+    background_color: META_THEME_COLORS.light,
   }
 }

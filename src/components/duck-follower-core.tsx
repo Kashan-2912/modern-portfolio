@@ -23,7 +23,7 @@ const CONFIG = {
   gutter: 5,
   renderedWidth: 64,
   renderedHeight: 64,
-  spriteSheet: "https://assets.chanhdai.com/images/sprites/duck.webp?v=2",
+  spriteSheet: "/duck.webp",
   animations: {
     walking: {
       row: 0,
@@ -171,7 +171,7 @@ function useDuckState() {
     )
     const randomAnimation =
       availableAnimations[
-        Math.floor(Math.random() * availableAnimations.length)
+      Math.floor(Math.random() * availableAnimations.length)
       ]
     lastIdleAnimationRef.current = randomAnimation
     return randomAnimation

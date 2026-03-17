@@ -39,16 +39,33 @@ export const USER: User = {
   namePronunciationUrl: "/voice.mp3",
   timeZone: "Asia/Karachi",
   keywords: [
-    "kashan ashraf",
-    "m kashan ashraf",
-    "full stack developer",
-    "mern stack developer",
-    "nextjs developer",
-    "react developer",
-    "frontend developer islamabad",
-    "web developer pakistan",
-    "typescript developer",
-    "comsats university",
-  ],
+  // Brand keywords (low competition, you should own these)
+  "kashan ashraf",
+  "kashan ashraf developer",
+  "kashan ashraf portfolio",
+
+  // Niche tech combos (low competition, high relevance)
+  "nextjs freelance developer pakistan",
+  "mern stack developer for hire",
+  "ai web app developer nextjs",
+  "clerk auth stripe integration developer",
+  "convex database nextjs developer",
+
+  // Geo-specific (low competition, high local demand)
+  "freelance web developer islamabad",
+  "react developer pakistan for hire",
+  "comsats computer science developer",
+
+  // Service/intent-based (people searching to hire)
+  "hire nextjs developer pakistan",
+  "fullstack developer portfolio mern",
+  "upwork nextjs freelancer",
+
+  // Niche project types (specific use cases)
+  "ai powered web applications developer",
+  "saas landing page developer nextjs",
+  "typescript react portfolio developer",
+],
+
   dateCreated: "2026-03-13", // YYYY-MM-DD
 }

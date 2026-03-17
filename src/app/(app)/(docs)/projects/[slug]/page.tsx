@@ -3,6 +3,7 @@ import { ArrowLeftIcon } from "lucide-react"
 import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
+import type { SoftwareApplication, WithContext } from "schema-dts"
 
 import { FramedImage } from "@/components/embed"
 import { InlineTOC } from "@/components/inline-toc"
@@ -58,6 +59,9 @@ export async function generateMetadata({
       url: projectUrl,
       type: "article",
       publishedTime: new Date(createdAt).toISOString(),
+      modifiedTime: doc.metadata.updatedAt
+        ? new Date(doc.metadata.updatedAt).toISOString()
+        : new Date(createdAt).toISOString(),
       images: {
         url: ogImage,
         width: 1200,
@@ -94,6 +98,13 @@ export default async function Page({
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(getProjectJsonLd(doc, projectInfo)).replace(/</g, "\\u003c"),
+        }}
+      />
+
       <div className="flex items-center justify-between p-2 pl-4">
         <Button
           className="h-7 gap-2 border-none px-0 font-mono text-muted-foreground hover:text-foreground"
@@ -145,4 +156,33 @@ export default async function Page({
       <div className="screen-line-before h-4 w-full" />
     </>
   )
+}
+
+function getProjectJsonLd(
+  doc: { metadata: { title: string; description: string; image?: string; createdAt: string; updatedAt?: string }; slug: string },
+  projectInfo?: { cover?: string; url?: string }
+): WithContext<SoftwareApplication> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: doc.metadata.title,
+    description: doc.metadata.description,
+    image:
+      doc.metadata.image ||
+      projectInfo?.cover ||
+      `/og/simple?title=${encodeURIComponent(doc.metadata.title)}&description=${encodeURIComponent(doc.metadata.description)}`,
+    url: `${SITE_INFO.url}/projects/${doc.slug}`,
+    datePublished: new Date(doc.metadata.createdAt).toISOString(),
+    ...(doc.metadata.updatedAt && {
+      dateModified: new Date(doc.metadata.updatedAt).toISOString(),
+    }),
+    author: {
+      "@type": "Person",
+      name: USER.displayName,
+      identifier: USER.username,
+      image: USER.avatar,
+    },
+    applicationCategory: "WebApplication",
+    operatingSystem: "Web",
+  }
 }
