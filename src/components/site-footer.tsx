@@ -17,7 +17,16 @@ export function SiteFooter({
         className="screen-line-before mx-auto border-x border-edge pt-4 data-[width=wide]:container data-[width=default]:md:max-w-3xl"
       >
         <p className="mb-1 px-4 text-center font-mono text-sm text-balance text-muted-foreground">
-          Inspired by chanhdai design
+          Inspired by{" "}
+          <a
+            className="underline transition-[color] hover:text-foreground"
+            href="https://chanhdai.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            chanhdai
+          </a>{" "}
+          design
         </p>
 
         <p className="mb-4 px-4 text-center font-mono text-sm text-balance text-muted-foreground">
