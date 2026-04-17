@@ -31,7 +31,7 @@ export function JobItem({
         {title} @
         <IntroItemLink
           className="ml-0.5 font-medium"
-          {...(experienceId
+          {...(!website
             ? {
                 href: `#experience-${experienceId}`,
                 target: "_self",
