@@ -2,6 +2,14 @@ import type { Certification } from "../types/certifications"
 
 export const CERTIFICATIONS: Certification[] = [
   {
+    title: "Senior Software Engineer",
+    issuer: "micro1",
+    issuerIconName: "micro1",
+    issueDate: "2026-03-30",
+    credentialID: "",
+    credentialURL: "certifications/micro1-cert.jpg",
+  },
+  {
     title: "Microsoft Azure Fundamentals (AZ-900)",
     issuer: "Microsoft",
     issuerIconName: "microsoft",
