@@ -8,6 +8,15 @@ import {
 } from "@c15t/nextjs/client"
 import posthog from "posthog-js"
 
+type GtagConsentState = "granted" | "denied"
+
+function updateGtagConsent(state: GtagConsentState) {
+  if (typeof window === "undefined") return
+  const win = window as typeof window & { dataLayer?: unknown[] }
+  win.dataLayer = win.dataLayer || []
+  win.dataLayer.push(["consent", "update", { analytics_storage: state }])
+}
+
 export function ConsentManagerClient({
   children,
 }: {
@@ -23,6 +32,7 @@ export function ConsentManagerClient({
       <ClientSideOptionsProvider
         callbacks={{
           onConsentSet({ preferences }) {
+            updateGtagConsent(preferences.measurement ? "granted" : "denied")
             if (preferences.measurement) {
               posthog.opt_in_capturing()
             } else {
@@ -37,4 +47,4 @@ export function ConsentManagerClient({
       </ClientSideOptionsProvider>
     </ConsentManagerProvider>
   )
-}
+}

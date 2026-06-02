@@ -14,6 +14,8 @@ import "@/instrumentation-client"
 import { fontMono, fontPixelSquare, fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 
+const GOOGLE_TAG_ID = "G-MQHYSVPBHS"
+
 function getWebSiteJsonLd(): WithContext<WebSite> {
   return {
     "@context": "https://schema.org",
@@ -117,6 +119,21 @@ export default function RootLayout({
             __html: JSON.stringify(getWebSiteJsonLd()).replace(/</g, "\\u003c"),
           }}
         />
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_TAG_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-tag" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('consent', 'default', {
+              analytics_storage: 'denied'
+            });
+            gtag('js', new Date());
+            gtag('config', '${GOOGLE_TAG_ID}');
+          `}
+        </Script>
       </head>
 
       <body>
