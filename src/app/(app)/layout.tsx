@@ -7,6 +7,12 @@ const ScrollToTop = dynamic(() =>
   import("@/components/scroll-to-top").then((mod) => mod.ScrollToTop)
 )
 
+const AgentsBundlePromo = dynamic(() =>
+  import("@/components/agents-bundle-promo").then(
+    (mod) => mod.AgentsBundlePromo
+  )
+)
+
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
@@ -14,6 +20,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       <main className="max-w-screen overflow-x-hidden px-2">{children}</main>
       <SiteFooter />
       <ScrollToTop />
+      <AgentsBundlePromo />
     </>
   )
 }

@@ -511,3 +511,66 @@
     display: none;
   }
 }
+
+/* Exact port of Clarity RCM sticky-chat-pill border shimmer */
+@keyframes sticky-chat-pill-border-shimmer {
+  0%,
+  70%,
+  100% {
+    opacity: 0.65;
+    background-position: 160% center;
+  }
+  78% {
+    opacity: 1;
+  }
+  86% {
+    opacity: 0.65;
+    background-position: -40% center;
+  }
+}
+
+[data-sticky-chat-pill].sticky-chat-pill--shimmer {
+  box-shadow:
+    rgba(0, 0, 0, 0.12) 0px 12px 40px,
+    rgba(255, 45, 0, 0.12) 0px 0px 0px 2px;
+}
+
+[data-sticky-chat-pill] .sticky-chat-pill-shimmer-ring {
+  position: absolute;
+  inset: -2px;
+  z-index: 2;
+  pointer-events: none;
+  border-radius: inherit;
+  padding: 3px;
+  background: linear-gradient(
+    115deg,
+    rgba(255, 45, 0, 0.15) 0%,
+    rgba(255, 45, 0, 0.55) 22%,
+    rgb(255, 255, 255) 48%,
+    rgba(255, 100, 70, 0.5) 72%,
+    rgba(255, 45, 0, 0.2) 100%
+  );
+  background-size: 220% 100%;
+  animation: sticky-chat-pill-border-shimmer 4.5s ease-in-out infinite;
+  /* Longhand — content-box + border-box punch-out (Clarity exact) */
+  -webkit-mask-image:
+    linear-gradient(#fff 0 0),
+    linear-gradient(#fff 0 0);
+  -webkit-mask-clip: content-box, border-box;
+  -webkit-mask-origin: content-box, border-box;
+  -webkit-mask-composite: xor;
+  mask-image:
+    linear-gradient(#fff 0 0),
+    linear-gradient(#fff 0 0);
+  mask-clip: content-box, border-box;
+  mask-origin: content-box, border-box;
+  mask-composite: exclude;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-sticky-chat-pill] .sticky-chat-pill-shimmer-ring {
+    animation: none;
+    opacity: 0.65;
+    background-position: 0% center;
+  }
+}
