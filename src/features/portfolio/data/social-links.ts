@@ -11,7 +11,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
     title: "LinkedIn",
     subtitle: "Muhammad Kashan Ashraf",
     icon: "/linkedin-icon.webp",
-    href: "https://linkedin.com/in/muhammad-kashan-ashraf/",
+    href: "https://www.linkedin.com/in/itzkashan/",
   },
   {
     title: "X",

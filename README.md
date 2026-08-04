@@ -190,6 +190,6 @@ MIT © [M. Kashan Ashraf](https://itzkashan.dev)
 
 **Built with obsessive attention to detail.**
 
-[Live Site](https://itzkashan.dev) · [LinkedIn](https://www.linkedin.com/in/muhammad-kashan-ashraf) · [GitHub](https://github.com/Kashan-2912)
+[Live Site](https://itzkashan.dev) · [LinkedIn](https://www.linkedin.com/in/itzkashan/) · [GitHub](https://github.com/Kashan-2912)
 
 </div>

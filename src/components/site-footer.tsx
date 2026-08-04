@@ -58,7 +58,7 @@ export function SiteFooter({
 
             <a
               className="flex items-center text-muted-foreground transition-[color] hover:text-foreground"
-              href="https://www.linkedin.com/in/muhammad-kashan-ashraf/"
+              href="https://www.linkedin.com/in/itzkashan/"
               target="_blank"
               rel="noopener noreferrer"
             >

@@ -1,0 +1,52 @@
+---
+title: Server Components vs Client Components in Next.js - When to Use Each
+description: Still sprinkling "use client" everywhere? Here's a clear mental model for Server vs Client Components in the Next.js App Router, and how choosing correctly keeps your apps fast and maintainable.
+image: https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&h=630&fit=crop
+createdAt: 2026-08-04
+updatedAt: 2026-08-04
+new: true
+---
+
+If you're building with the Next.js App Router, you've probably hit this moment: something breaks, you slap `"use client"` at the top of the file, and it works. That reflex is understandable, and expensive. Every Client Component ships JavaScript the browser must download, parse, and hydrate. Choosing the wrong boundary is one of the fastest ways to slow a modern React app down.
+
+Let's break down the difference and when to use each.
+
+## What Are Server Components?
+
+In the App Router, **every component is a Server Component by default**. You don't opt in; you opt out.
+
+Server Components run on the server (at request or build time). They can fetch data directly, read secrets and environment variables, and access the filesystem or a database. Their component code never ships to the browser, so they cost **zero bytes** in the client bundle.
+
+Use them when you're rendering layouts, fetching data, showing static or streamed content, or doing anything that doesn't need clicks, state, or browser APIs.
+
+## What Are Client Components?
+
+Client Components are the React you already know. Mark a file with `"use client"` at the top and you get hooks (`useState`, `useEffect`), event handlers (`onClick`, `onChange`), and browser APIs (`window`, `localStorage`).
+
+Important nuance: Client Components are still **pre-rendered on the server** for the first HTML paint. The difference is their JavaScript also travels to the browser so React can hydrate them and make them interactive.
+
+## A Simple Decision Framework
+
+Ask these three questions before reaching for `"use client"`:
+
+1. **Does it need browser APIs?** (`window`, `document`, `localStorage`, observers) → Client Component.
+2. **Does it need React hooks or user events?** (`useState`, `useEffect`, `onClick`) → Client Component.
+3. **Otherwise?** → Keep it a Server Component.
+
+If only a button or a small widget needs interactivity, extract **that** leaf into a Client Component. Don't mark the whole page.
+
+## The Mistake That Kills Performance
+
+The most common bundle-size mistake: adding `"use client"` to a route's `page.tsx` because one widget needs state. That pulls the entire page, and everything it imports, into the client graph.
+
+The better pattern is composition: keep the page on the server, pass data as props, and nest a small interactive island. Server Components can render Client Components. Client Components can receive Server Components as `children`. Push the boundary down.
+
+## Why This Matters for Sustainable Code
+
+This choice isn't just about Next.js trivia; it's the same spirit as clean code. Defaulting to Server Components means less JavaScript for users, clearer separation of data vs interaction, and apps that stay maintainable as they grow. You're writing code that cares about the next developer **and** the next page load.
+
+## Final Thoughts
+
+Treat Server Components as the default. Reach for Client Components only when interactivity or browser APIs demand it. Keep those islands small. Do that consistently and you'll ship faster pages, smaller bundles, and a codebase that scales without the `"use client"` tax on every file.
+
+If this helped, check out more notes on [the blog](/blog), and ship something a little leaner this week.
