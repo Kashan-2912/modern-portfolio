@@ -97,8 +97,8 @@ export const PROJECTS: Project[] = [
       "Framer Motion",
       "TypeScript",
     ],
-    description: `- Modern, ephemeral collaborative notepad that lives entirely in the URL
-- Content compressed with LZ-String and stored in the URL hash — no database, no login
+    description: `- Collaborative notepad (Share Pad) that lives entirely in the URL
+- Content compressed with LZ-String and stored in the URL hash; no database, no login
 - Rich text editing via Slate.js
 - One-click export to .txt, .md, or .html
 - Premium dark-first UI with electric border animations and magnetic cursor effects`,
@@ -112,7 +112,7 @@ export const PROJECTS: Project[] = [
       start: "March 2026",
       end: "Present",
     },
-    link: "https://www.itzkashan.dev/",
+    link: "https://itzkashan.dev/",
     slug: "portfolio",
     cover: "/project-showcase/portfolio-showcase.png",
     github: "https://github.com/Kashan-2912/modern-portfolio",

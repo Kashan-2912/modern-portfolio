@@ -29,6 +29,16 @@ const nextConfig: NextConfig = {
     ],
     qualities: [75, 100],
   },
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.itzkashan.dev" }],
+        destination: "https://itzkashan.dev/:path*",
+        permanent: true,
+      },
+    ]
+  },
   async rewrites() {
     return [
       {
