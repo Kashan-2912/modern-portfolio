@@ -1,0 +1,239 @@
+---
+title: "Next.js App Router SEO: Metadata, Sitemap, and Robots.txt"
+description: A practical Next.js App Router SEO guide covering metadata, generateMetadata, canonical URLs, Open Graph, sitemap.ts, robots.ts, and JSON-LD.
+image: https://images.unsplash.com/photo-1781914476939-91a41b914899?auto=format&fit=crop&w=1200&h=630&q=85
+createdAt: 2026-08-11
+updatedAt: 2026-08-11
+new: true
+---
+
+A fast Next.js site can still miss search traffic if search engines cannot understand what each page is about. In the App Router, SEO is not one plugin or one meta tag. It is a small set of conventions that describe your pages, expose URLs for crawling, and connect your content to the right search intent.
+
+The good news is that Next.js already includes most of the pieces. You can build a solid technical SEO foundation with the Metadata API, `sitemap.ts`, `robots.ts`, and structured data without adding a large SEO dependency.
+
+## Start With the Next.js Metadata API
+
+The Metadata API controls the title, description, canonical URL, Open Graph preview, and Twitter card for a route. For a page whose metadata does not depend on fetched data, export a static `metadata` object from `page.tsx` or `layout.tsx`.
+
+```tsx
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Web Performance Services",
+  description:
+    "Performance-focused web development for fast, accessible websites.",
+  alternates: {
+    canonical: "/services",
+  },
+  openGraph: {
+    title: "Web Performance Services",
+    description:
+      "Performance-focused web development for fast, accessible websites.",
+    url: "/services",
+    type: "website",
+  },
+}
+```
+
+A useful title tells a searcher what the page offers. A useful description gives them a reason to click. Neither should be a list of repeated keywords. Write both for the person who will see the result first, then make sure they accurately match the page content.
+
+Next.js merges metadata from parent layouts with metadata from child routes. That makes the root layout a good place for site-wide defaults, while each page should provide its own title, description, and canonical URL when the content is unique.
+
+For the complete list of supported fields, see the [Next.js Metadata API documentation](https://nextjs.org/docs/app/api-reference/functions/generate-metadata).
+
+## Use `generateMetadata` for Dynamic Pages
+
+Blog posts, product pages, and documentation routes usually get their content from a slug. Their metadata should come from the same record as the page itself so the title, description, and social preview cannot drift apart.
+
+```tsx
+import type { Metadata } from "next"
+import { notFound } from "next/navigation"
+
+import { getPostBySlug } from "@/features/blog/data/posts"
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}): Promise<Metadata> {
+  const { slug } = await params
+  const post = getPostBySlug(slug)
+
+  if (!post) {
+    notFound()
+  }
+
+  return {
+    title: post.title,
+    description: post.description,
+    alternates: {
+      canonical: `/blog/${post.slug}`,
+    },
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      url: `/blog/${post.slug}`,
+      type: "article",
+      images: post.image ? [{ url: post.image }] : undefined,
+    },
+  }
+}
+```
+
+The important detail is consistency. The page heading, metadata title, description, canonical URL, and social image should all describe the same article. If a page renders “Next.js App Router SEO” but its metadata says “React tutorial,” search engines and visitors receive conflicting signals.
+
+## Add Canonical URLs to Avoid Duplicate Pages
+
+The same content can accidentally become available through multiple URLs: query parameters, alternate routes, trailing-slash variants, or old slugs. A canonical URL tells search engines which address represents the preferred version.
+
+```tsx
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/blog/nextjs-app-router-seo-metadata-sitemap-robots",
+  },
+}
+```
+
+Canonical tags are not redirects. They are a signal, so the canonical page should also contain the content you want indexed and should link consistently to itself. When a URL has permanently changed, use a redirect as well.
+
+## Make Social Sharing Work With Open Graph
+
+Open Graph and Twitter metadata do not replace search optimization, but they control how a page appears when it is shared. A useful article image, accurate title, and readable description can improve clicks from social posts, messages, and community links.
+
+For article pages, include:
+
+- A descriptive title that is not unnecessarily truncated.
+- A summary that explains the practical outcome.
+- A landscape image close to `1200×630` pixels.
+- The canonical article URL.
+- `type: "article"` for article pages.
+
+The [Next.js guide to metadata and OG images](https://nextjs.org/docs/app/getting-started/metadata-and-og-images) covers both static images and generated Open Graph images. For a small blog, a carefully selected static image per article is often enough.
+
+## Generate a Sitemap With `sitemap.ts`
+
+A sitemap gives crawlers a direct list of public URLs that matter. In the App Router, create `app/sitemap.ts` and return a typed array of entries.
+
+```ts
+import type { MetadataRoute } from "next"
+
+import { getAllPosts } from "@/features/blog/data/posts"
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const posts = getAllPosts().map((post) => ({
+    url: `https://example.com/blog/${post.slug}`,
+    lastModified: new Date(post.updatedAt),
+  }))
+
+  return [
+    {
+      url: "https://example.com",
+      lastModified: new Date(),
+    },
+    {
+      url: "https://example.com/blog",
+      lastModified: new Date(),
+    },
+    ...posts,
+  ]
+}
+```
+
+Next.js serves this file at `/sitemap.xml`. Include canonical, publicly accessible pages—not every URL your application can technically render. Update `lastModified` when the content meaningfully changes, not on every request, otherwise crawlers receive noisy signals.
+
+A sitemap does not guarantee ranking or indexing. It helps discovery; useful content and a technically accessible page still determine whether a URL earns visibility.
+
+## Tell Crawlers What They May Access With `robots.ts`
+
+The `robots.txt` file controls crawler access to paths on your site. Use `app/robots.ts` to generate it from typed configuration.
+
+```ts
+import type { MetadataRoute } from "next"
+
+export default function robots(): MetadataRoute.Robots {
+  return {
+    rules: {
+      userAgent: "*",
+      allow: "/",
+      disallow: ["/dashboard/", "/api/"],
+    },
+    sitemap: "https://example.com/sitemap.xml",
+  }
+}
+```
+
+Be careful with `disallow`. It prevents crawling, not necessarily indexing. A blocked URL can still appear in search results if another page links to it. Do not disallow CSS, JavaScript, or public article paths that search engines need to render and understand your site.
+
+Your public blog should normally be crawlable. Private dashboards, internal tools, and API routes are better candidates for restrictions—but authentication and authorization must protect those routes independently.
+
+## Add Structured Data for Article Context
+
+Structured data helps search engines identify what a page represents. For a blog article, `BlogPosting` JSON-LD can describe the headline, description, image, dates, URL, and author.
+
+```tsx
+import type { BlogPosting, WithContext } from "schema-dts"
+
+function getArticleJsonLd(post: Post): WithContext<BlogPosting> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.description,
+    image: post.image,
+    url: `https://example.com/blog/${post.slug}`,
+    datePublished: new Date(post.createdAt).toISOString(),
+    dateModified: new Date(post.updatedAt).toISOString(),
+    author: {
+      "@type": "Person",
+      name: "Your Name",
+    },
+  }
+}
+```
+
+Structured data must describe visible page content. Do not add ratings, reviews, or dates that are not actually present. JSON-LD supports understanding; it is not a shortcut for earning rich results.
+
+## A Practical Next.js SEO Checklist
+
+Before publishing a page, check these items:
+
+1. **One clear search intent:** The title, heading, description, and body answer the same question.
+2. **Useful page title:** It explains the topic without repeating the same phrase unnaturally.
+3. **Unique description:** It summarizes the benefit of reading the page.
+4. **Canonical URL:** The preferred URL is explicit and consistent with internal links.
+5. **Crawlable HTML:** Important content is rendered in a way search engines can access.
+6. **Sitemap entry:** The canonical URL appears in `sitemap.xml`.
+7. **Correct robots rules:** The page is not accidentally blocked.
+8. **Helpful internal links:** Related pages connect to each other with descriptive anchor text.
+9. **Fast experience:** Images are sized correctly and unnecessary client-side JavaScript is avoided.
+10. **Real publishing date:** The page shows when it was published and updated when that information matters.
+
+The last two points connect SEO to architecture. As I covered in [Server Components vs Client Components in Next.js](/blog/server-components-vs-client-components-nextjs), keeping static content on the server can reduce browser work. A fast page with clear content is a better experience for both readers and crawlers.
+
+## Common App Router SEO Mistakes
+
+### Using the same title on every route
+
+A root layout title is a useful fallback, but every important page needs a title that distinguishes its content. A blog index, article, project, and contact page should not all appear as the same result.
+
+### Forgetting the production URL
+
+Relative URLs work well for many Metadata API fields because `metadataBase` can resolve them. Sitemap entries and structured data should still resolve to the real production origin. Check that environment variables do not leave `localhost` in production output.
+
+### Blocking the whole app in `robots.ts`
+
+A small typo in `disallow` can hide an entire section. Open `/robots.txt` after deployment and read the generated file instead of assuming the configuration did what you intended.
+
+### Treating the sitemap as the SEO strategy
+
+A sitemap is an index of URLs, not a content plan. It cannot make thin, duplicated, or unclear pages useful. Start with a specific question, answer it better than the available alternatives, and connect the article to related pages on your site.
+
+### Adding keywords without adding answers
+
+Repeating “Next.js App Router SEO” in every paragraph makes an article harder to read and does not create topical depth. Use related concepts naturally: metadata, canonical tags, crawlability, structured data, page speed, and search intent.
+
+## Final Thoughts
+
+Next.js App Router SEO becomes manageable when you treat it as part of the page architecture. Use the Metadata API for accurate page descriptions, `generateMetadata` for content-driven routes, canonical URLs for duplicate control, `sitemap.ts` for discovery, `robots.ts` for crawl rules, and JSON-LD for structured context.
+
+These tools do not guarantee rankings, but they remove common technical obstacles and give every article a clear identity. If you are comparing the underlying frameworks first, [Next.js vs React.js](/blog/next-js-vs-react-js) is a useful starting point. For more practical notes, explore [the rest of the blog](/blog) and keep improving one page at a time.
