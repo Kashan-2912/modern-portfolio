@@ -150,6 +150,7 @@ export default function RootLayout({
         </Providers>
         <Analytics />
       </body>
+      <Script src="https://scripts.simpleanalyticscdn.com/latest.js" />
     </html>
   )
 }
