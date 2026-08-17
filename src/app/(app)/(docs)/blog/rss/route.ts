@@ -40,7 +40,8 @@ export function GET() {
 
   return new Response(rssFeed, {
     headers: {
-      "Content-Type": "text/xml",
+      "Content-Type": "text/xml; charset=utf-8",
+      "X-Robots-Tag": "noindex, follow",
     },
   })
 }
