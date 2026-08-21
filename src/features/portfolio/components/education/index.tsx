@@ -1,6 +1,6 @@
 import { EDUCATION } from "../../data/education"
-import { Panel, PanelHeader, PanelTitle } from "../panel"
 import { ExperienceItem } from "../experiences/experience-item"
+import { Panel, PanelHeader, PanelTitle } from "../panel"
 
 export function Education() {
   return (

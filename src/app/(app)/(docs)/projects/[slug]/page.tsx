@@ -13,11 +13,11 @@ import { Button } from "@/components/ui/button"
 import { Prose } from "@/components/ui/typography"
 import { SITE_INFO, X_USERNAME } from "@/config/site"
 import { PROJECTS } from "@/features/portfolio/data/projects"
+import { USER } from "@/features/portfolio/data/user"
 import {
   getAllProjectDocs,
   getProjectDocBySlug,
 } from "@/features/project/data/project-documents"
-import { USER } from "@/features/portfolio/data/user"
 import { cn } from "@/lib/utils"
 
 export const revalidate = false

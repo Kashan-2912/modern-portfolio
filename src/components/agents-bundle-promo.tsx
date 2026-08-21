@@ -1,9 +1,9 @@
 "use client"
 
-import { forwardRef, useEffect, useState } from "react"
 import { XIcon } from "lucide-react"
 import { AnimatePresence, motion, useReducedMotion } from "motion/react"
 import Image from "next/image"
+import { forwardRef, useEffect, useState } from "react"
 
 import { cn } from "@/lib/utils"
 

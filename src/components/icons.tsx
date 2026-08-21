@@ -1,4 +1,5 @@
 import {
+  BoxIcon,
   BriefcaseBusinessIcon,
   CopyIcon,
   FileIcon,
@@ -13,7 +14,6 @@ import {
   ToggleLeftIcon,
   VibrateIcon,
   ZapIcon,
-  BoxIcon,
 } from "lucide-react"
 
 type IconProps = React.HTMLAttributes<SVGElement>

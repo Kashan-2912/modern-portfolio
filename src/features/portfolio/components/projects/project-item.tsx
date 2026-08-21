@@ -9,9 +9,8 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/base/ui/collapsible"
-
-import { Tag } from "@/components/ui/tag"
 import { getSkillIcon } from "@/components/icons"
+import { Tag } from "@/components/ui/tag"
 import { ProseMono } from "@/components/ui/typography"
 import { UTM_PARAMS } from "@/config/site"
 import { addQueryParams } from "@/utils/url"

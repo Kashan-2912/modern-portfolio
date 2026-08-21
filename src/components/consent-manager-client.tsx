@@ -1,9 +1,9 @@
 "use client"
 
 import {
+  ClientSideOptionsProvider,
   ConsentManagerDialog,
   ConsentManagerProvider,
-  ClientSideOptionsProvider,
   CookieBanner,
 } from "@c15t/nextjs/client"
 import posthog from "posthog-js"

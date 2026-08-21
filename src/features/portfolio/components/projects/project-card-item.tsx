@@ -1,11 +1,11 @@
 "use client"
 
-import { GithubIcon, GlobeIcon, ArrowUpRightIcon } from "lucide-react"
+import { ArrowUpRightIcon,GithubIcon, GlobeIcon } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 
-import { Tag } from "@/components/ui/tag"
 import { getSkillIcon } from "@/components/icons"
+import { Tag } from "@/components/ui/tag"
 import { cn } from "@/lib/utils"
 
 import type { Project } from "../../types/projects"

@@ -1,8 +1,9 @@
 import "@/styles/globals.css"
+import "@/instrumentation-client"
 
+import { Analytics } from "@vercel/analytics/next"
 import type { Metadata, Viewport } from "next"
 import Script from "next/script"
-import { Analytics } from "@vercel/analytics/next"
 import { NuqsAdapter } from "nuqs/adapters/next/app"
 import type { WebSite, WithContext } from "schema-dts"
 
@@ -10,7 +11,6 @@ import { DuckFollower } from "@/components/duck-follower"
 import { Providers } from "@/components/providers"
 import { META_THEME_COLORS, SITE_INFO, X_USERNAME } from "@/config/site"
 import { USER } from "@/features/portfolio/data/user"
-import "@/instrumentation-client"
 import { fontMono, fontPixelSquare, fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 

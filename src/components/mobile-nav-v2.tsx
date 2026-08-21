@@ -10,8 +10,8 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 import { useMediaQuery } from "@/hooks/use-media-query"
-import { cn } from "@/lib/utils"
 import { haptic } from "@/lib/haptic"
+import { cn } from "@/lib/utils"
 import type { NavItem } from "@/types/nav"
 
 export function MobileNavV2({ items }: { items: NavItem[] }) {
