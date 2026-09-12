@@ -1,0 +1,316 @@
+---
+title: "Building autonomous AI agents with Next.js and n8n"
+description: "Step‑by‑step guide to connect a Next.js UI to n8n workflows, creating self‑operating AI agents with low‑code automation."
+image: https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&h=630&q=85
+createdAt: 2026-09-12
+updatedAt: 2026-09-12
+new: true
+---
+
+## Overview
+
+An autonomous AI agent consists of three moving parts:
+
+1. **Front‑end** – a Next.js app that gathers user intent and displays results.  
+2. **Orchestrator** – n8n workflows that decide which model to call, how to chain calls, and when to store data.  
+3. **Execution environment** – Vercel (or any Node host) for the UI, n8n Cloud (or self‑hosted) for the workflows.
+
+The guide builds a simple “Task‑assistant” that can:
+
+* Receive a natural‑language request (e.g., “Schedule a meeting with John tomorrow at 3 pm”).  
+* Choose the appropriate OpenAI function call (calendar, email, reminder).  
+* Trigger the chosen action via n8n.  
+* Return a confirmation to the user.
+
+All code is TypeScript, and the n8n side uses low‑code nodes only.
+
+---
+
+## Directory layout
+
+```
+/my-agent/
+│
+├─ /pages/
+│   ├─ index.tsx                # UI entry point
+│   └─ api/
+│       └─ agent.ts             # Proxy to n8n webhook
+│
+├─ /components/
+│   └─ ChatBox.tsx              # Minimal chat UI
+│
+├─ /lib/
+│   └─ n8nClient.ts             # Helper for signed webhook calls
+│
+└─ next.config.js               # Vercel config (optional)
+```
+
+---
+
+## 1. Create the n8n workflow
+
+### 1.1 Webhook trigger
+
+1. Add a **Webhook** node.  
+   * Method: `POST`  
+   * Path: `/webhook/agent`  
+   * Enable **Response** → *Return data* (so Next.js can read the result).
+
+### 1.2 Parse user request
+
+Add a **Function** node called **ParseIntent**:
+
+```js
+// Input: { text: string }
+const { text } = items[0].json;
+
+// Simple regex‑based intent detection (replace with LLM if needed)
+let intent = 'unknown';
+if (/schedule|meeting/i.test(text)) intent = 'calendar';
+if (/email|send/i.test(text)) intent = 'email';
+if (/remind|reminder/i.test(text)) intent = 'reminder';
+
+return [{ json: { intent, original: text } }];
+```
+
+### 1.3 Branch by intent
+
+Add an **IF** node that checks `{{ $json.intent }} === 'calendar'`, `=== 'email'`, `=== 'reminder'`. Connect each branch to the appropriate action node.
+
+### 1.4 Calendar action (example)
+
+* **HTTP Request** – call Google Calendar API (or any internal endpoint).  
+* **Set** node – format the response: `{ status: 'scheduled', details: … }`.
+
+### 1.5 Email action
+
+* **SMTP** node – send an email.  
+* **Set** node – `{ status: 'sent', to: … }`.
+
+### 1.6 Reminder action
+
+* **Delay** node – wait for the requested time.  
+* **Set** node – `{ status: 'reminded', at: … }`.
+
+### 1.7 Return to caller
+
+All branches converge on a final **Respond** node:
+
+```json
+{
+  "status": "ok",
+  "result": {{$json}}
+}
+```
+
+Publish the workflow and copy the **Webhook URL**. It will look like:
+
+```
+https://your-n8n-instance.com/webhook/agent
+```
+
+---
+
+## 2. Secure the webhook
+
+n8n supports **Signature Authentication**. Generate a secret (e.g., `AGENT_WEBHOOK_SECRET`) and store it in Vercel environment variables.
+
+In the **Webhook** node:
+
+* Enable **Authentication** → **Signature**.  
+* Set **Signature Header** to `x-n8n-signature`.  
+* Choose **HMAC SHA256** and paste the secret.
+
+Now the webhook will reject any request that does not provide a matching HMAC.
+
+---
+
+## 3. Front‑end – Next.js UI
+
+### 3.1 `pages/index.tsx`
+
+```tsx
+import { useState } from 'react';
+import ChatBox from '../components/ChatBox';
+
+export default function Home() {
+  const [messages, setMessages] = useState<
+    { role: 'user' | 'assistant'; text: string }[]
+  >([]);
+
+  const handleSubmit = async (input: string) => {
+    // Optimistic UI
+    setMessages((prev) => [...prev, { role: 'user', text: input }]);
+
+    const res = await fetch('/api/agent', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text: input }),
+    });
+
+    const data = await res.json();
+    setMessages((prev) => [
+      ...prev,
+      { role: 'assistant', text: data.result?.status ?? 'unknown' },
+    ]);
+  };
+
+  return (
+    <main style={{ maxWidth: '600px', margin: 'auto', padding: '2rem' }}>
+      <h1>Task Assistant</h1>
+      <ChatBox messages={messages} onSubmit={handleSubmit} />
+    </main>
+  );
+}
+```
+
+### 3.2 `components/ChatBox.tsx`
+
+```tsx
+import { useState, FormEvent } from 'react';
+
+type Props = {
+  messages: { role: 'user' | 'assistant'; text: string }[];
+  onSubmit: (input: string) => Promise<void>;
+};
+
+export default function ChatBox({ messages, onSubmit }: Props) {
+  const [input, setInput] = useState('');
+
+  const handle = async (e: FormEvent) => {
+    e.preventDefault();
+    if (!input.trim()) return;
+    await onSubmit(input);
+    setInput('');
+  };
+
+  return (
+    <div>
+      <div style={{ minHeight: '300px', marginBottom: '1rem' }}>
+        {messages.map((msg, i) => (
+          <div key={i} style={{ textAlign: msg.role === 'user' ? 'right' : 'left' }}>
+            <p>{msg.text}</p>
+          </div>
+        ))}
+      </div>
+
+      <form onSubmit={handle}>
+        <input
+          type="text"
+          placeholder="Ask me to schedule, email, or remind"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          style={{ width: '80%' }}
+        />
+        <button type="submit" style={{ width: '18%' }}>
+          Send
+        </button>
+      </form>
+    </div>
+  );
+}
+```
+
+### 3.3 API proxy – `pages/api/agent.ts`
+
+```ts
+import type { NextApiRequest, NextApiResponse } from 'next';
+import { signWebhook } from '../../lib/n8nClient';
+
+const WEBHOOK_URL = process.env.N8N_WEBHOOK_URL!;
+const WEBHOOK_SECRET = process.env.N8N_WEBHOOK_SECRET!;
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  if (req.method !== 'POST') {
+    res.setHeader('Allow', ['POST']);
+    return res.status(405).end('Method Not Allowed');
+  }
+
+  // Forward the payload to n8n
+  const payload = req.body;
+  const signature = signWebhook(JSON.stringify(payload), WEBHOOK_SECRET);
+
+  try {
+    const n8nRes = await fetch(WEBHOOK_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-n8n-signature': signature,
+      },
+      body: JSON.stringify(payload),
+    });
+
+    const data = await n8nRes.json();
+    return res.status(200).json(data);
+  } catch (err) {
+    console.error('n8n call failed', err);
+    return res.status(502).json({ error: 'Workflow execution failed' });
+  }
+}
+```
+
+### 3.4 HMAC helper – `lib/n8nClient.ts`
+
+```ts
+import crypto from 'crypto';
+
+export function signWebhook(body: string, secret: string): string {
+  return crypto.createHmac('sha256', secret).update(body).digest('hex');
+}
+```
+
+---
+
+## 4. Environment variables
+
+Add these to Vercel (or your `.env.local` for local dev):
+
+```
+N8N_WEBHOOK_URL=https://your-n8n-instance.com/webhook/agent
+N8N_WEBHOOK_SECRET=super-secret-123
+```
+
+---
+
+## 5. Deployment checklist
+
+| Step | Action | Typical failure |
+|------|--------|-----------------|
+| 1 | Push repo to GitHub | CI pipeline misconfiguration |
+| 2 | Connect repo to Vercel | Missing env vars cause 502 on first request |
+| 3 | Deploy n8n workflow | Wrong webhook path → 404 |
+| 4 | Test end‑to‑end | Signature mismatch → 401 from n8n |
+| 5 | Enable Vercel Edge Functions (optional) | Edge runtime does not support `crypto` without polyfill |
+
+**Tip:** Enable Vercel’s **Preview Deployments** for each PR. The preview URL can be used as a temporary webhook target while you iterate on the workflow.
+
+---
+
+## 6. Extending the agent
+
+| Feature | Where to add | Example |
+|---------|--------------|---------|
+| LLM intent extraction | Replace `ParseIntent` Function node with an **OpenAI** node. | Prompt: “Classify the following request into calendar, email, or reminder.” |
+| Persistent memory | Add a **Postgres** node before the **IF** to store `{{ $json.original }}` and retrieve prior context. | Use `SELECT … FROM conversations WHERE user_id = …` |
+| Multi‑step plans | Chain multiple **HTTP Request** nodes under the same intent branch. | For “Book a flight and send confirmation”, call flight API then email node. |
+| Rate limiting | Insert a **Throttle** node after the webhook. | Max 5 calls per minute per user. |
+
+---
+
+## 7. Common pitfalls and how to address them
+
+1. **Signature mismatch** – Ensure the same secret is used in both n8n webhook config and the `signWebhook` helper. A stray newline in the secret string will break the HMAC.
+2. **CORS errors** – The API route runs on the same domain as the UI, so CORS is not an issue. If you expose the webhook directly to the browser, add CORS headers in the n8n **Webhook** node.
+3. **Timeouts** – n8n default execution timeout is 30 seconds. Long‑running actions (e.g., large file uploads) need the **Execute Workflow** node with increased timeout or a background queue.
+4. **Missing environment variables on local dev** – Vercel CLI (`vercel dev`) reads `.env.local`. Verify the variables are present before running `npm run dev`.
+
+---
+
+## 8. Recap
+
+* Set up an n8n workflow that receives a webhook, decides on an intent, runs the appropriate low‑code node, and returns a JSON payload.  
+* Secure the webhook with HMAC and store the secret in Vercel.  
+* Build a minimal Next.js UI that posts user text to an internal API route, which forwards the request to n8n and returns the result.  
+* Deploy both sides, test the end‑to‑end flow, and iterate with additional LLM calls or persistence as needed.
+
+The pattern scales: you can add more intents, replace the regex parser with a sophisticated model, or move the workflow to a self‑hosted n8n instance for tighter control. The core idea—using Next.js as a thin front‑end and n8n as the orchestrator—keeps the codebase small while giving you the flexibility of a full workflow engine.
