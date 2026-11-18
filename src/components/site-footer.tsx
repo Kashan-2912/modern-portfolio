@@ -42,6 +42,31 @@ export function SiteFooter({
           .
         </p>
 
+        <div className="mb-4 flex justify-center px-4">
+          <a
+            href="https://launchype.com/product/kashan-dev-portfolio?ref=badge-launchype"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="https://launchype.com/api/badge/kashan-dev-portfolio?theme=dark"
+              alt="Kashan Dev Portfolio on LauncHype"
+              width={144}
+              height={50}
+              loading="lazy"
+              decoding="async"
+              style={{
+                display: "inline-block",
+                border: 0,
+                width: "100%",
+                maxWidth: 144,
+                height: "auto",
+                maxHeight: 50,
+              }}
+            />
+          </a>
+        </div>
+
         <div className="screen-line-before screen-line-after flex w-full before:z-1 after:z-1">
           <div className="mx-auto flex items-center justify-center gap-3 border-x border-edge bg-background px-4">
             <a
@@ -89,7 +114,6 @@ export function SiteFooter({
               <RssIcon className="size-4" />
               <span className="sr-only">RSS</span>
             </a>
-
           </div>
         </div>
       </div>
