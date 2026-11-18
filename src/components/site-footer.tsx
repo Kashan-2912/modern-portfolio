@@ -90,6 +90,24 @@ export function SiteFooter({
               <span className="sr-only">RSS</span>
             </a>
 
+            <Separator />
+
+            <a
+              className="inline-flex"
+              href="https://launchype.com/product/itzkashan-dev?ref=badge-launchype"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="https://launchype.com/api/badge/itzkashan-dev?theme=dark"
+                alt="itzkashan.dev on LauncHype"
+                width={144}
+                height={50}
+                loading="lazy"
+                decoding="async"
+                className="inline-block h-auto max-h-[50px] w-full max-w-[144px] border-0"
+              />
+            </a>
           </div>
         </div>
       </div>
