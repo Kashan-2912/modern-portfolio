@@ -20,16 +20,17 @@
   "dependencies": {
     "@base-ui/react": "^1.1.0",
     "@bprogress/next": "^3.2.12",
-    "@c15t/nextjs": "^1.8.3",
+    "@c15t/nextjs": "^3.2.2",
+    "@c15t/react": "3.2.2",
     "@date-fns/tz": "^1.4.1",
     "@hookform/resolvers": "^4.1.0",
-    "@openpanel/web": "^1.1.0",
+    "@openpanel/web": "^1.4.4",
     "@vercel/analytics": "^2.0.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
     "date-fns": "^4.1.0",
-    "fumadocs-core": "^16.6.9",
+    "fumadocs-core": "^16.19.5",
     "geist": "^1.7.0",
     "hast-util-to-jsx-runtime": "^2.3.6",
     "jotai": "^2.12.5",
@@ -37,11 +38,11 @@
     "lru-cache": "^11.2.6",
     "lucide-react": "^0.544.0",
     "motion": "^12.34.5",
-    "next": "16.1.6",
+    "next": "16.4.6",
     "next-mdx-remote": "^6.0.0",
     "next-themes": "^0.4.6",
     "nuqs": "^2.8.0",
-    "posthog-js": "^1.356.1",
+    "posthog-js": "^1.453.1",
     "radix-ui": "^1.4.3",
     "react": "19.2.4",
     "react-dom": "19.2.4",
@@ -50,14 +51,14 @@
     "react-hotkeys-hook": "^5.2.1",
     "react-markdown": "^10.1.0",
     "react-medium-image-zoom": "^5.4.0",
-    "react-use": "^17.6.0",
+    "react-use": "^17.6.1",
     "schema-dts": "^1.1.5",
-    "sharp": "^0.34.3",
+    "sharp": "^0.35.5",
     "sonner": "^2.0.7",
     "tailwind-merge": "^3.3.1",
     "vcard-creator": "^0.7.2",
     "web-haptics": "^0.0.6",
-    "zod": "^3.25.76"
+    "zod": "^4.6.6"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.2.1",
@@ -69,7 +70,7 @@
     "@types/react": "19.2.10",
     "@types/react-dom": "19.2.3",
     "eslint": "^9.22.0",
-    "eslint-config-next": "16.1.6",
+    "eslint-config-next": "16.4.6",
     "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "gray-matter": "^4.0.3",
@@ -97,6 +98,17 @@
   "resolutions": {
     "@types/react": "19.2.10",
     "@types/react-dom": "19.2.3"
+  },
+  "pnpm": {
+    "overrides": {
+      "@babel/core": "7.29.6",
+      "baseline-browser-mapping": "2.11.0",
+      "browserslist": "4.28.7",
+      "fflate": "0.4.9",
+      "mdast-util-to-hast": "13.2.1",
+      "source-map-js": "1.2.2",
+      "yaml": "2.8.3"
+    }
   },
   "engines": {
     "node": "22.x",

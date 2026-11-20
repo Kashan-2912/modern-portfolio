@@ -2,7 +2,6 @@ import { ChevronDownIcon } from "lucide-react"
 import { Slot } from "radix-ui"
 import React from "react"
 
-import { Button } from "@/components/base/ui/button"
 import {
   Collapsible,
   CollapsibleContent,
@@ -51,20 +50,18 @@ export function CollapsibleList<T>({
       {items.length > max && (
         <div className="flex h-12 items-center justify-center pb-px">
           <CollapsibleTrigger
-            render={
-              <Button className="gap-2 border-none px-3" size="sm">
-                <span className="hidden group-data-closed/collapsible:block">
-                  Show More
-                </span>
+            className="group/button inline-flex h-8 shrink-0 items-center justify-center gap-1 rounded-lg border border-transparent border-none bg-primary bg-clip-padding px-3 text-sm font-medium whitespace-nowrap text-primary-foreground transition-all outline-none select-none active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50 hover:bg-primary/80 focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
+          >
+            <span className="hidden group-data-closed/collapsible:block">
+              Show More
+            </span>
 
-                <span className="hidden group-data-open/collapsible:block">
-                  Show Less
-                </span>
+            <span className="hidden group-data-open/collapsible:block">
+              Show Less
+            </span>
 
-                <ChevronDownIcon className="group-data-open/collapsible:rotate-180" />
-              </Button>
-            }
-          />
+            <ChevronDownIcon className="group-data-open/collapsible:rotate-180" />
+          </CollapsibleTrigger>
         </div>
       )}
     </Collapsible>

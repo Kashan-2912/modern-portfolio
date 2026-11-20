@@ -1,11 +1,10 @@
 "use client"
 
 import {
-  ClientSideOptionsProvider,
-  ConsentManagerDialog,
-  ConsentManagerProvider,
-  CookieBanner,
-} from "@c15t/nextjs/client"
+  ConsentBanner,
+  ConsentDialog,
+} from "@c15t/nextjs"
+import { ConsentProvider, local } from "@c15t/react"
 import posthog from "posthog-js"
 
 type GtagConsentState = "granted" | "denied"
@@ -23,28 +22,27 @@ export function ConsentManagerClient({
   children: React.ReactNode
 }) {
   return (
-    <ConsentManagerProvider
+    <ConsentProvider
       options={{
-        mode: "offline",
+        mode: local(),
         consentCategories: ["necessary", "measurement"],
-      }}
-    >
-      <ClientSideOptionsProvider
-        callbacks={{
-          onConsentSet({ preferences }) {
-            updateGtagConsent(preferences.measurement ? "granted" : "denied")
-            if (preferences.measurement) {
+        callbacks: {
+          onPermissionsChanged({ snapshot }) {
+            const measurementGranted =
+              snapshot.effectivePermissions.measurement
+            updateGtagConsent(measurementGranted ? "granted" : "denied")
+            if (measurementGranted) {
               posthog.opt_in_capturing()
             } else {
               posthog.opt_out_capturing()
             }
           },
-        }}
-      >
-        <CookieBanner />
-        <ConsentManagerDialog />
-        {children}
-      </ClientSideOptionsProvider>
-    </ConsentManagerProvider>
+        },
+      }}
+    >
+      <ConsentBanner />
+      <ConsentDialog />
+      {children}
+    </ConsentProvider>
   )
 }
